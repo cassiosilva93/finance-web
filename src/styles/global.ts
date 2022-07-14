@@ -10,12 +10,11 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: ${theme.colors.gray[900]};
-    color: ${theme.colors.txt}  ;
+    color: ${theme.colors.gray[700]}  ;
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
     font-family: 'Roboto Slab', sans-serif;
-    font-size: 1rem;
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
