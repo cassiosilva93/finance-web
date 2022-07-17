@@ -19,7 +19,11 @@ import {
   TableContainer,
 } from './style';
 
-export default function Home() {
+interface HomeProps {
+  onOpenModal: () => void;
+}
+
+export default function Home({ onOpenModal }: HomeProps) {
   const [offset, setOffset] = useState(0);
 
   return (
@@ -84,7 +88,7 @@ export default function Home() {
                     <td>{transaction.category}</td>
                     <td>{DataHelper.formatToBRDate(transaction.date)}</td>
                     <td>
-                      <HiDotsHorizontal size={25} />
+                      <HiDotsHorizontal size={25} onClick={onOpenModal} />
                     </td>
                   </tr>
                 );
