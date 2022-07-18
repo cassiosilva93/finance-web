@@ -5,10 +5,8 @@ interface ModalProviderProps {
 }
 
 interface ModaContextProps {
-  modalState: {
-    visible: boolean;
-  };
-  handleOpenModal: (body: any) => void;
+  isVisible: boolean;
+  handleOpenModal: () => void;
   handleCloseModal: () => void;
 }
 
@@ -17,19 +15,19 @@ export const ModalContext = createContext<ModaContextProps>(
 );
 
 export function ModalProvider({ children }: ModalProviderProps) {
-  const [modalState, setModalState] = useState({ visible: true });
+  const [isVisible, setIsVisible] = useState(false);
 
-  function handleOpenModal(body: any) {
-    setModalState({ ...body, visible: true });
+  function handleOpenModal() {
+    setIsVisible(true);
   }
 
   function handleCloseModal() {
-    setModalState({ visible: false });
+    setIsVisible(false);
   }
 
   return (
     <ModalContext.Provider
-      value={{ modalState, handleOpenModal, handleCloseModal }}
+      value={{ isVisible, handleOpenModal, handleCloseModal }}
     >
       {children}
     </ModalContext.Provider>

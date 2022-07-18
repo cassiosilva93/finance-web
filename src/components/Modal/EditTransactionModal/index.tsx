@@ -7,7 +7,7 @@ import { FaTrash } from 'react-icons/fa';
 import ReactModal from 'react-modal';
 import {
   CancelContainer,
-  Container,
+  Content,
   ModalBody,
   ModalFooter,
   RadioBox,
@@ -17,18 +17,19 @@ import {
 
 export default function Modal() {
   const [type, setType] = useState('income');
-  const { modalState, handleCloseModal } = useModal();
+  const { isVisible, handleCloseModal } = useModal();
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  function handleEditTransaction(event: FormEvent) {
     event.preventDefault();
   }
 
   return (
     <ReactModal
-      isOpen={modalState.visible}
+      isOpen={isVisible}
       onRequestClose={handleCloseModal}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
+      ariaHideApp={false}
     >
       <button
         type="button"
@@ -38,9 +39,9 @@ export default function Modal() {
         <CgClose size={20} color={theme.colors.gray[700]} />
       </button>
 
-      <form onSubmit={handleCreateNewTransaction}>
-        <Container>
-          <h2>Título</h2>
+      <form onSubmit={handleEditTransaction}>
+        <Content>
+          <h2>Informações da transação</h2>
           <div className="divider" />
 
           <ModalBody>
@@ -72,7 +73,7 @@ export default function Modal() {
 
             <input type="text" placeholder="Categoria" />
           </ModalBody>
-        </Container>
+        </Content>
 
         <ModalFooter>
           <RemoveTransactionContainer>

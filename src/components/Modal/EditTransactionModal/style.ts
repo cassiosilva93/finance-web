@@ -12,7 +12,7 @@ const colors = {
   red: '#E52E4D',
 };
 
-export const Container = styled.div`
+export const Content = styled.div`
   padding: 20px;
 
   input {
