@@ -5,6 +5,7 @@ import Pagination from '@src/components/Pagination';
 import { DataHelper } from '@src/helpers/DataHelper';
 import { StringHelper } from '@src/helpers/StringHelper';
 import { ValueHelper } from '@src/helpers/ValueHelper';
+import { useModal } from '@src/hooks/useModal';
 import theme from '@src/theme';
 import database from '@src/tmp/database';
 import { useState } from 'react';
@@ -19,12 +20,9 @@ import {
   TableContainer,
 } from './style';
 
-interface HomeProps {
-  onOpenModal: () => void;
-}
-
-export default function Home({ onOpenModal }: HomeProps) {
+export default function Home() {
   const [offset, setOffset] = useState(0);
+  const { handleOpenModal } = useModal();
 
   return (
     <>
@@ -88,7 +86,7 @@ export default function Home({ onOpenModal }: HomeProps) {
                     <td>{transaction.category}</td>
                     <td>{DataHelper.formatToBRDate(transaction.date)}</td>
                     <td>
-                      <HiDotsHorizontal size={25} onClick={onOpenModal} />
+                      <HiDotsHorizontal size={25} onClick={handleOpenModal} />
                     </td>
                   </tr>
                 );

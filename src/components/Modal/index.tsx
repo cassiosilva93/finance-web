@@ -1,3 +1,4 @@
+import { useModal } from '@src/hooks/useModal';
 import theme from '@src/theme';
 import { FormEvent, useState } from 'react';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
@@ -14,13 +15,9 @@ import {
   TransactionTypeContainer,
 } from './style';
 
-interface ModalProps {
-  isModalOpen: boolean;
-  handleCloseModal: () => void;
-}
-
-export default function Modal({ isModalOpen, handleCloseModal }: ModalProps) {
+export default function Modal() {
   const [type, setType] = useState('income');
+  const { modalState, handleCloseModal } = useModal();
 
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
@@ -28,7 +25,7 @@ export default function Modal({ isModalOpen, handleCloseModal }: ModalProps) {
 
   return (
     <ReactModal
-      isOpen={isModalOpen}
+      isOpen={modalState.visible}
       onRequestClose={handleCloseModal}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"

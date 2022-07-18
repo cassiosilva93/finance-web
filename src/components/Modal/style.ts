@@ -119,7 +119,10 @@ export const RadioBox = styled.button<RadioBoxProps>`
   border-radius: 5px;
   align-items: center;
   justify-content: center;
-  color: ${theme.colors.gray[700]};
+  color: ${props =>
+    props.isActive
+      ? transparentize(0.4, theme.colors.txt)
+      : theme.colors.gray[700]};
   transition: filter 0.3s;
 
   &:hover {
