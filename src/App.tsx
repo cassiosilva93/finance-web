@@ -1,4 +1,4 @@
-import Modal from './components/Modal/EditTransactionModal';
+import Modal from './components/Modal/UploadFileModal';
 import { ModalProvider } from './hooks/useModal';
 import Home from './pages/Home';
 import GlobalStyle from './styles/global';

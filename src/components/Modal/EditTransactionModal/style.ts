@@ -83,6 +83,7 @@ export const RemoveTransactionContainer = styled.div`
   font-size: 12px;
   border-radius: 5px;
   transition: background-color 0.3s;
+  cursor: pointer;
 
   a {
     margin-left: 5px;

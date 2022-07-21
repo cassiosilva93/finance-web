@@ -4,14 +4,14 @@ interface ModalProviderProps {
   children: ReactNode;
 }
 
-interface ModaContextProps {
+interface ModalContextProps {
   isVisible: boolean;
   handleOpenModal: () => void;
   handleCloseModal: () => void;
 }
 
-export const ModalContext = createContext<ModaContextProps>(
-  {} as ModaContextProps,
+export const ModalContext = createContext<ModalContextProps>(
+  {} as ModalContextProps,
 );
 
 export function ModalProvider({ children }: ModalProviderProps) {
