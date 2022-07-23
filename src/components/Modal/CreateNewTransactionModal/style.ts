@@ -38,7 +38,7 @@ export const ModalBody = styled.div`
 
 export const ModalFooter = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   padding: 10px 20px;
   background-color: ${transparentize('0.7', '#28262E')};
@@ -68,27 +68,6 @@ export const CancelContainer = styled.a`
 
   &:hover {
     color: ${theme.colors.orange[700]};
-  }
-`;
-
-export const RemoveTransactionContainer = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: ${transparentize(0.8, '#8C8C8C')};
-  padding: 8px;
-  font-size: 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  cursor: pointer;
-
-  a {
-    margin-left: 5px;
-  }
-
-  &:hover {
-    transition: background-color 0.3s;
-    background-color: ${theme.colors.orange[700]};
-    color: ${theme.colors.txt};
   }
 `;
 

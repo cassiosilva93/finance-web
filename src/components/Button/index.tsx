@@ -1,9 +1,5 @@
-import { ButtonHTMLAttributes } from 'react';
 import { Container } from './style';
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: string;
-};
+import { ButtonProps } from './types';
 
 export default function Button({ children, ...rest }: ButtonProps) {
   return (

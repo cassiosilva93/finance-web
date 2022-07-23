@@ -1,14 +1,7 @@
 import { ValueHelper } from '@src/helpers/ValueHelper';
 import React from 'react';
-import { IconType } from 'react-icons/lib';
 import { Container, Header } from './style';
-
-interface BoxSummaryContentProps {
-  title: string;
-  value: number;
-  color: string;
-  icon: IconType;
-}
+import BoxSummaryContentProps from './types';
 
 export default function BoxSummary({
   title,
@@ -20,6 +13,7 @@ export default function BoxSummary({
     <Container>
       <Header>
         <p>{title}</p>
+
         {React.createElement(icon, {
           size: 25,
           color,

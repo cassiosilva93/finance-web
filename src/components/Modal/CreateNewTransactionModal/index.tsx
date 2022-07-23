@@ -2,7 +2,6 @@ import theme from '@src/theme';
 import { FormEvent, useState } from 'react';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
-import { FaTrash } from 'react-icons/fa';
 import ReactModal from 'react-modal';
 import { ModalProps } from '../types';
 import {
@@ -11,11 +10,10 @@ import {
   ModalBody,
   ModalFooter,
   RadioBox,
-  RemoveTransactionContainer,
   TransactionTypeContainer,
 } from './style';
 
-export default function EditTransactionModal({
+export default function CreateNewTransactionModal({
   isVisibleModal,
   handleCloseModal,
 }: ModalProps) {
@@ -43,7 +41,7 @@ export default function EditTransactionModal({
 
       <form onSubmit={handleEditTransaction}>
         <Content>
-          <h2>Editar transação</h2>
+          <h2>Criar transação</h2>
           <div className="divider" />
 
           <ModalBody>
@@ -78,11 +76,6 @@ export default function EditTransactionModal({
         </Content>
 
         <ModalFooter>
-          <RemoveTransactionContainer>
-            <FaTrash />
-            <a onClick={() => {}}>Excluir</a>
-          </RemoveTransactionContainer>
-
           <div>
             <CancelContainer onClick={handleCloseModal}>
               Cancelar

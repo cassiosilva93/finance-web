@@ -1,7 +1,4 @@
-interface DropzoneContentMessageProps {
-  isDragActive: boolean;
-  isDragReject: boolean;
-}
+import DropzoneContentMessageProps from './types';
 
 export default function DropzoneContentMessage({
   isDragActive,
@@ -14,6 +11,7 @@ export default function DropzoneContentMessage({
           Você também pode selecionar o arquivo clicando na{' '}
           <span>área tracejada</span>.
         </p>
+
         <div>
           <p>
             <strong>Observação</strong>: Apenas arquivos com a extensão{' '}

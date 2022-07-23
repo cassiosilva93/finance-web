@@ -9,11 +9,13 @@ export default function Header() {
         <h1>
           Bem-vindo(a), <span>Cassio</span>
         </h1>
+
         <p>Aqui está o resumo da sua vida financeira</p>
       </Welcome>
 
       <UserArea>
         <Avatar name="Cassio Oliveira" size="56" round="50%" />
+
         <UserInfo>
           <p className="name">Cassio Oliveira Silva</p>
           <p id="email">cassiointw1993@gmail.com</p>
