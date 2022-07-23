@@ -2,7 +2,7 @@ const database = [
   {
     id: 1,
     title: 'Titulo da transação 1',
-    value: 1000.23,
+    value: 1023131312300.23,
     type: 'income',
     category: 'Casa',
     date: '2022-07-11T12:37:33.304Z',
@@ -10,7 +10,7 @@ const database = [
   {
     id: 2,
     title: 'Titulo da transação para testar a quantidade de caracteres',
-    value: 1000.23,
+    value: 31313.23,
     type: 'income',
     category: 'Casa',
     date: '2022-07-11T12:37:33.304Z',
@@ -18,7 +18,7 @@ const database = [
   {
     id: 3,
     title: 'Titulo da transação 3',
-    value: 1000.23,
+    value: 123131212.23,
     type: 'outcome',
     category: 'Casa',
     date: '2022-07-11T12:37:33.304Z',
@@ -26,7 +26,7 @@ const database = [
   {
     id: 4,
     title: 'Titulo da transação 4',
-    value: 1000.23,
+    value: 231313.23,
     type: 'income',
     category: 'Casa',
     date: '2022-07-11T12:37:33.304Z',
@@ -35,7 +35,7 @@ const database = [
     id: 5,
     title: 'Titulo da transação 5',
     value: 1000.23,
-    type: 'outoome',
+    type: 'outcome',
     category: 'Casa',
     date: '2022-07-11T12:37:33.304Z',
   },

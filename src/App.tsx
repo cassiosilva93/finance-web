@@ -1,15 +1,12 @@
-import Modal from './components/Modal/UploadFileModal';
-import { ModalProvider } from './hooks/useModal';
-import Home from './pages/Home';
+import TransactionPage from './pages/TransactionPage';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <ModalProvider>
-      <Home />
-      <Modal />
+    <>
+      <TransactionPage />
       <GlobalStyle />
-    </ModalProvider>
+    </>
   );
 }
 

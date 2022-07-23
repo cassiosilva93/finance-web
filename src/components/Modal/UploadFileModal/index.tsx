@@ -1,12 +1,12 @@
 import DropzoneContentMessage from '@src/components/DropzoneContentMessage';
 import FileUploaded from '@src/components/FileUploaded';
-import { useModal } from '@src/hooks/useModal';
 import theme from '@src/theme';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { CgClose } from 'react-icons/cg';
 import { IoMdCloudUpload } from 'react-icons/io';
 import ReactModal from 'react-modal';
+import { ModalProps } from '../types';
 import {
   CancelContainer,
   Content,
@@ -15,11 +15,10 @@ import {
   ModalFooter,
 } from './style';
 
-interface File {}
-
-export default function Modal() {
-  const { isVisible, handleCloseModal } = useModal();
-
+export default function UploadFileModal({
+  isVisibleModal,
+  handleCloseModal,
+}: ModalProps) {
   const onDrop = useCallback((acceptedFile: any) => {
     console.log(acceptedFile);
   }, []);
@@ -41,7 +40,7 @@ export default function Modal() {
 
   return (
     <ReactModal
-      isOpen={isVisible}
+      isOpen={isVisibleModal}
       onRequestClose={handleCloseModal}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
