@@ -1,12 +1,13 @@
-import TransactionPage from './pages/TransactionPage';
+import { BrowserRouter } from 'react-router-dom';
+import Routers from './routes';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
-    <>
-      <TransactionPage />
+    <BrowserRouter>
       <GlobalStyle />
-    </>
+      <Routers />
+    </BrowserRouter>
   );
 }
 

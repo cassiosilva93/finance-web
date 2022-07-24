@@ -4,10 +4,15 @@ import Header from '@src/components/Header';
 import theme from '@src/theme';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { FiDollarSign } from 'react-icons/fi';
+import { Link, useLocation } from 'react-router-dom';
 import { ButtonContainer, MainContainer } from './style';
 import MainLayoutProps from './types';
 
 export default function MainLayoult({ children }: MainLayoutProps) {
+  const { pathname } = useLocation();
+  const isSelectedTransactions = pathname.includes('transactions');
+  const isSelectedDahboard = pathname.includes('dashboard');
+
   return (
     <>
       <Header />
@@ -36,8 +41,24 @@ export default function MainLayoult({ children }: MainLayoutProps) {
       </MainContainer>
 
       <ButtonContainer>
-        <Button style={{ height: 50, width: 200 }}>Dashboard</Button>
-        <Button style={{ height: 50, width: 200 }}>Transações</Button>
+        <Link to="/dashboard">
+          <Button
+            className="dashboard"
+            isSelected={isSelectedDahboard}
+            style={{ height: 50, width: 200 }}
+          >
+            Dashboard
+          </Button>
+        </Link>
+        <Link to="/transactions">
+          <Button
+            className="transactions"
+            isSelected={isSelectedTransactions}
+            style={{ height: 50, width: 200 }}
+          >
+            Transações
+          </Button>
+        </Link>
       </ButtonContainer>
 
       {children}

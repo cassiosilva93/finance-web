@@ -60,7 +60,7 @@ export default function TransactionPage() {
         <Scrollbars style={{ height: '50vh' }}>
           <TransactionsContainer>
             {database.map(transaction => (
-              <TransactionItem transaction={transaction} />
+              <TransactionItem transaction={transaction} key={transaction.id} />
             ))}
           </TransactionsContainer>
         </Scrollbars>

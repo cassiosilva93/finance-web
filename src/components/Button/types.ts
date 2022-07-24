@@ -1,5 +1,12 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: string;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+  isSelected?: boolean;
 };
+
+interface ContainerButtonProps {
+  isSelected?: boolean;
+}
+
+export type { ButtonProps, ContainerButtonProps };
