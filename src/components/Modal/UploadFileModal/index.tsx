@@ -1,26 +1,31 @@
 import DropzoneContentMessage from '@src/components/DropzoneContentMessage';
 import FileUploaded from '@src/components/FileUploaded';
 import theme from '@src/theme';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { CgClose } from 'react-icons/cg';
+import { FaTrash } from 'react-icons/fa';
 import { IoMdCloudUpload } from 'react-icons/io';
 import ReactModal from 'react-modal';
-import { ModalProps } from '../types';
+import { File, ModalProps } from '../types';
 import {
   CancelContainer,
   Content,
   DropzoneContainer,
+  FileUploadedContainer,
   ModalBody,
   ModalFooter,
+  RemoveTransactionContainer,
 } from './style';
 
 export default function UploadFileModal({
   isVisibleModal,
   handleCloseModal,
 }: ModalProps) {
+  const [file, setFile] = useState<File | null>();
+
   const onDrop = useCallback((acceptedFile: any) => {
-    console.log(acceptedFile);
+    setFile(acceptedFile[0]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
@@ -79,7 +84,15 @@ export default function UploadFileModal({
         </ModalBody>
       </Content>
 
-      <FileUploaded />
+      {!!file && (
+        <FileUploadedContainer>
+          <FileUploaded name={file.name} size={file.size} />
+          <RemoveTransactionContainer>
+            <FaTrash />
+            <a onClick={() => setFile(null)}>Excluir</a>
+          </RemoveTransactionContainer>
+        </FileUploadedContainer>
+      )}
 
       <ModalFooter>
         <div>

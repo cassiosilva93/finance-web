@@ -1,21 +1,18 @@
-import { FaFileCsv, FaTrash } from 'react-icons/fa';
-import { Container, FileInfo, RemoveTransactionContainer } from './style';
+import filesize from 'filesize';
+import { FaFileCsv } from 'react-icons/fa';
+import { File } from '../Modal/types';
+import { Container, FileInfo } from './style';
 
-export default function FileUploaded() {
+export default function FileUploaded({ name, size }: File) {
   return (
     <Container>
       <FileInfo>
         <FaFileCsv size={30} />
         <div>
-          <span>my_transactions.png</span>
-          <strong>125kb</strong>
+          <span>{name}</span>
+          <strong>{filesize(size)}</strong>
         </div>
       </FileInfo>
-
-      <RemoveTransactionContainer>
-        <FaTrash />
-        <a onClick={() => {}}>Excluir</a>
-      </RemoveTransactionContainer>
     </Container>
   );
 }
