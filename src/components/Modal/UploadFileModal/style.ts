@@ -35,6 +35,11 @@ export const ModalFooter = styled.div`
   padding: 10px 20px;
   background-color: ${transparentize('0.7', '#28262E')};
 
+  div {
+    display: flex;
+    align-items: center;
+  }
+
   button {
     background: ${theme.colors.orange[700]};
     border: 0;
@@ -44,6 +49,9 @@ export const ModalFooter = styled.div`
     font-size: 15px;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 
     &:hover {
       background-color: ${transparentize(0.3, theme.colors.orange[700])};
