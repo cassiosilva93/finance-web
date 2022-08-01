@@ -121,7 +121,7 @@ export default function UploadFileModal({
               Cancelar
             </CancelContainer>
             <button type="submit" disabled={isSubmitting}>
-              {true ? (
+              {isSubmitting ? (
                 <ReactLoading type={'spin'} height={20} width={20} />
               ) : (
                 'Salvar'
