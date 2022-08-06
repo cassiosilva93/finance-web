@@ -1,0 +1,12 @@
+mutation CreateNewTransaction(
+  $title: String
+  $type: String
+  $value: Float
+  $category: String
+) {
+  createTransaction(
+    data: { title: $title, type: $type, value: $value, category: $category }
+  ) {
+    id
+  }
+}

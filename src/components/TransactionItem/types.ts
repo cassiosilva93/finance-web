@@ -1,5 +1,6 @@
 interface TransactionItemProps {
   transaction: {
+    id: string;
     type: string;
     title: string;
     date: string;
