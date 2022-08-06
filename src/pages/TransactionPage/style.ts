@@ -39,3 +39,19 @@ export const TransactionsContainer = styled.div`
     margin-top: 15px;
   }
 `;
+
+export const Content = styled.div`
+  padding: 0 0 30px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoadingContainer = styled.div`
+  svg {
+    margin-top: 100px;
+    height: 35px;
+    width: 35px;
+  }
+`;
