@@ -43,7 +43,14 @@ export const ModalFooter = styled.div`
   padding: 10px 20px;
   background-color: ${transparentize('0.7', '#28262E')};
 
+  div {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
+
   button {
+    display: flex;
     background: ${theme.colors.orange[700]};
     border: 0;
     border-radius: 5px;
@@ -52,6 +59,8 @@ export const ModalFooter = styled.div`
     font-size: 15px;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       background-color: ${transparentize(0.3, theme.colors.orange[700])};
@@ -107,5 +116,13 @@ export const RadioBox = styled.button<RadioBoxProps>`
   &:hover {
     transition: filter 0.3s;
     filter: brightness(0.8);
+  }
+`;
+
+export const ErrorsContainer = styled.div`
+  padding: 0 0 20px 20px;
+
+  div + div {
+    margin-top: 3px;
   }
 `;
