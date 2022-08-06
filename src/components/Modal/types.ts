@@ -3,9 +3,9 @@ interface ModalProps {
   handleCloseModal: () => void;
 }
 
-interface File {
+interface FileProps {
   name: string;
   size: number;
 }
 
-export type { ModalProps, File };
+export type { ModalProps, FileProps };
