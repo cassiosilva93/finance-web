@@ -1,6 +1,7 @@
+import Button from '@src/components/Button';
 import DropzoneContentMessage from '@src/components/DropzoneContentMessage';
 import FileUploaded from '@src/components/FileUploaded';
-import { saveFile } from '@src/services/transactions';
+import { createTransactionFile } from '@src/services/axios/CreateTransactionFile';
 import theme from '@src/theme';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -11,7 +12,7 @@ import { IoMdCloudUpload } from 'react-icons/io';
 import ReactLoading from 'react-loading';
 import ReactModal from 'react-modal';
 import { toast } from 'react-toastify';
-import { File, ModalProps } from '../types';
+import { FileProps, ModalProps } from '../types';
 import {
   CancelContainer,
   Content,
@@ -23,10 +24,10 @@ import {
 } from './style';
 
 export default function UploadFileModal({
-  isVisibleModal,
   handleCloseModal,
+  isVisibleModal,
 }: ModalProps) {
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<FileProps | null>(null);
 
   const {
     handleSubmit,
@@ -34,7 +35,7 @@ export default function UploadFileModal({
   } = useForm();
 
   const onDrop = useCallback((acceptedFile: any) => {
-    if (!acceptedFile.length) return toast.warning('Arquivo não suportado.');
+    if (!acceptedFile.length) return toast.error('Arquivo não suportado.');
     setFile(acceptedFile[0]);
   }, []);
 
@@ -55,9 +56,9 @@ export default function UploadFileModal({
 
   async function onSubmit() {
     try {
-      const isSave = await saveFile(file);
-      if (isSave) return toast.success('Arquivo salvo com sucesso.');
-      return toast.info('Selecione um arquivo.');
+      if (!file) return;
+      await createTransactionFile(file);
+      return toast.success('Arquivo salvo com sucesso.');
     } catch {
       toast.error('Ocorreu um erro ao salvar o arquivo.');
     }
@@ -120,13 +121,13 @@ export default function UploadFileModal({
             <CancelContainer onClick={handleCloseModal}>
               Cancelar
             </CancelContainer>
-            <button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting || !Boolean(file)}>
               {isSubmitting ? (
                 <ReactLoading type={'spin'} height={20} width={20} />
               ) : (
                 'Salvar'
               )}
-            </button>
+            </Button>
           </div>
         </ModalFooter>
       </form>
