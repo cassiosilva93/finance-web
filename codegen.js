@@ -15,5 +15,3 @@ module.exports = {
     },
   },
 };
-
-console.log(process.env.VITE_API_FINANCE_URL);
