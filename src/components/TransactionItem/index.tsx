@@ -17,9 +17,11 @@ export default function TransactionItem({
   transaction: { date, title, type, value },
 }: TransactionItemProps) {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
-  const dateFormatted = DateHelper.formatToBRDate(date);
-  const hourFormatted = DateHelper.getCompleteHourOfDate(date);
-  const valueFormatted = ValueHelper.formatToBRLCurrency(value);
+  const transactionInfoFormatted = {
+    value: ValueHelper.formatToBRLCurrency(value),
+    date: DateHelper.formatToBRDate(date),
+    hour: DateHelper.getCompleteHourOfDate(date),
+  };
 
   function handleShowModal() {
     setIsVisibleModal(prev => !prev);
@@ -38,11 +40,11 @@ export default function TransactionItem({
         <TransactionInfoContainer>
           <LeftInfo>
             <p>{title}</p>
-            <strong>{`${dateFormatted} ${hourFormatted}`}</strong>
+            <strong>{`${transactionInfoFormatted.date} ${transactionInfoFormatted.hour}`}</strong>
           </LeftInfo>
 
           <RightInfo type={type}>
-            <p>{valueFormatted}</p>
+            <p>{transactionInfoFormatted.value}</p>
 
             <BsThreeDots size={30} onClick={() => handleShowModal()} />
           </RightInfo>
