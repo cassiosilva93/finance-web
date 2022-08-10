@@ -16,6 +16,14 @@ export type Scalars = {
   Date: any;
 };
 
+export type ConsolidedValues = {
+  __typename?: 'ConsolidedValues';
+  lastTransactionRegistered?: Maybe<Scalars['Date']>;
+  totalIncome?: Maybe<Scalars['Float']>;
+  totalOutcome?: Maybe<Scalars['Float']>;
+  totalTransactionRegister?: Maybe<Scalars['Int']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createTransaction: Transaction;
@@ -47,6 +55,7 @@ export type MutationUpdateTransactionArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getConsolidedValues?: Maybe<ConsolidedValues>;
   getTransaction?: Maybe<Transaction>;
   getTransactions: Array<Maybe<Transaction>>;
   login?: Maybe<Scalars['String']>;
@@ -110,10 +119,20 @@ export type CreateNewTransactionMutationVariables = Exact<{
 
 export type CreateNewTransactionMutation = { __typename?: 'Mutation', createTransaction: { __typename?: 'Transaction', id?: string | null } };
 
+export type GetBoxSummaryInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBoxSummaryInfoQuery = { __typename?: 'Query', getConsolidedValues?: { __typename?: 'ConsolidedValues', totalIncome?: number | null, totalOutcome?: number | null } | null };
+
 export type GetAllTransactionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllTransactionsQuery = { __typename?: 'Query', getTransactions: Array<{ __typename?: 'Transaction', id?: string | null, type?: string | null, title?: string | null, created_at?: any | null, value?: number | null } | null> };
+
+export type GetTransactionInfoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTransactionInfoQuery = { __typename?: 'Query', getConsolidedValues?: { __typename?: 'ConsolidedValues', lastTransactionRegistered?: any | null, totalTransactionRegister?: number | null } | null };
 
 
 export const CreateNewTransactionDocument = gql`
@@ -154,6 +173,41 @@ export function useCreateNewTransactionMutation(baseOptions?: Apollo.MutationHoo
 export type CreateNewTransactionMutationHookResult = ReturnType<typeof useCreateNewTransactionMutation>;
 export type CreateNewTransactionMutationResult = Apollo.MutationResult<CreateNewTransactionMutation>;
 export type CreateNewTransactionMutationOptions = Apollo.BaseMutationOptions<CreateNewTransactionMutation, CreateNewTransactionMutationVariables>;
+export const GetBoxSummaryInfoDocument = gql`
+    query GetBoxSummaryInfo {
+  getConsolidedValues {
+    totalIncome
+    totalOutcome
+  }
+}
+    `;
+
+/**
+ * __useGetBoxSummaryInfoQuery__
+ *
+ * To run a query within a React component, call `useGetBoxSummaryInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBoxSummaryInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBoxSummaryInfoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBoxSummaryInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetBoxSummaryInfoQuery, GetBoxSummaryInfoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBoxSummaryInfoQuery, GetBoxSummaryInfoQueryVariables>(GetBoxSummaryInfoDocument, options);
+      }
+export function useGetBoxSummaryInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBoxSummaryInfoQuery, GetBoxSummaryInfoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBoxSummaryInfoQuery, GetBoxSummaryInfoQueryVariables>(GetBoxSummaryInfoDocument, options);
+        }
+export type GetBoxSummaryInfoQueryHookResult = ReturnType<typeof useGetBoxSummaryInfoQuery>;
+export type GetBoxSummaryInfoLazyQueryHookResult = ReturnType<typeof useGetBoxSummaryInfoLazyQuery>;
+export type GetBoxSummaryInfoQueryResult = Apollo.QueryResult<GetBoxSummaryInfoQuery, GetBoxSummaryInfoQueryVariables>;
 export const GetAllTransactionsDocument = gql`
     query GetAllTransactions {
   getTransactions {
@@ -192,3 +246,38 @@ export function useGetAllTransactionsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type GetAllTransactionsQueryHookResult = ReturnType<typeof useGetAllTransactionsQuery>;
 export type GetAllTransactionsLazyQueryHookResult = ReturnType<typeof useGetAllTransactionsLazyQuery>;
 export type GetAllTransactionsQueryResult = Apollo.QueryResult<GetAllTransactionsQuery, GetAllTransactionsQueryVariables>;
+export const GetTransactionInfoDocument = gql`
+    query GetTransactionInfo {
+  getConsolidedValues {
+    lastTransactionRegistered
+    totalTransactionRegister
+  }
+}
+    `;
+
+/**
+ * __useGetTransactionInfoQuery__
+ *
+ * To run a query within a React component, call `useGetTransactionInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTransactionInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTransactionInfoQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTransactionInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetTransactionInfoQuery, GetTransactionInfoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTransactionInfoQuery, GetTransactionInfoQueryVariables>(GetTransactionInfoDocument, options);
+      }
+export function useGetTransactionInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTransactionInfoQuery, GetTransactionInfoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTransactionInfoQuery, GetTransactionInfoQueryVariables>(GetTransactionInfoDocument, options);
+        }
+export type GetTransactionInfoQueryHookResult = ReturnType<typeof useGetTransactionInfoQuery>;
+export type GetTransactionInfoLazyQueryHookResult = ReturnType<typeof useGetTransactionInfoLazyQuery>;
+export type GetTransactionInfoQueryResult = Apollo.QueryResult<GetTransactionInfoQuery, GetTransactionInfoQueryVariables>;

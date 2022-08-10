@@ -1,6 +1,7 @@
 import BoxSummary from '@src/components/BoxSummary';
 import Button from '@src/components/Button';
 import Header from '@src/components/Header';
+import { useGetBoxSummaryInfoQuery } from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { FiDollarSign } from 'react-icons/fi';
@@ -13,6 +14,12 @@ export default function MainLayoult({ children }: MainLayoutProps) {
   const isSelectedTransactions = pathname.includes('transactions');
   const isSelectedDahboard = pathname.includes('dashboard');
 
+  const { data } = useGetBoxSummaryInfoQuery();
+
+  const income = data?.getConsolidedValues?.totalIncome || 0;
+  const outcome = data?.getConsolidedValues?.totalOutcome || 0;
+  const total = income - outcome;
+
   return (
     <>
       <Header />
@@ -20,21 +27,21 @@ export default function MainLayoult({ children }: MainLayoutProps) {
       <MainContainer>
         <BoxSummary
           title="Entrada"
-          value={190000.43}
+          value={income}
           color={theme.colors.green[900]}
           icon={BsArrowUpCircle}
         />
 
         <BoxSummary
           title="Saída"
-          value={34230.21}
+          value={outcome}
           color={theme.colors.red[900]}
           icon={BsArrowDownCircle}
         />
 
         <BoxSummary
           title="Total"
-          value={155770.22}
+          value={total}
           color={theme.colors.orange[800]}
           icon={FiDollarSign}
         />

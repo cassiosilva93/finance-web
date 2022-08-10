@@ -1,0 +1,6 @@
+query GetTransactionInfo {
+  getConsolidedValues {
+    lastTransactionRegistered
+    totalTransactionRegister
+  }
+}

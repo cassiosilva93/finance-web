@@ -3,8 +3,12 @@ import CreateNewTransactionModal from '@src/components/Modal/CreateNewTransactio
 import UploadFileModal from '@src/components/Modal/UploadFileModal';
 import NoContent from '@src/components/NoContent';
 import TransactionItem from '@src/components/TransactionItem';
+import { DateHelper } from '@src/helpers/DateHelper';
 import MainLayoult from '@src/layouts/MainLayout';
-import { useGetAllTransactionsLazyQuery } from '@src/services/graphql/generated/schema';
+import {
+  useGetAllTransactionsLazyQuery,
+  useGetTransactionInfoQuery,
+} from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
 import { useEffect, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -26,8 +30,10 @@ export default function TransactionPage() {
     setIsVisibleCreateNewTransactionModal,
   ] = useState(false);
 
-  const [getAllTransactions, { data, loading }] =
+  const [getAllTransactions, { data: getAlltransactionData, loading }] =
     useGetAllTransactionsLazyQuery();
+
+  const { data: getTransactionInfoData } = useGetTransactionInfoQuery();
 
   useEffect(() => {
     async function getTransactions() {
@@ -65,11 +71,19 @@ export default function TransactionPage() {
 
         <RegisterInformationContainer>
           <p>
-            <strong>79</strong> Registros
+            <strong>
+              {getTransactionInfoData?.getConsolidedValues
+                ?.totalTransactionRegister || 0}
+            </strong>{' '}
+            Registros
           </p>
 
           <p className="last-transaction">
-            <strong>Última transação:</strong> 29/12/1992
+            <strong>Última transação:</strong>{' '}
+            {DateHelper.formatToBRDate(
+              getTransactionInfoData?.getConsolidedValues
+                ?.lastTransactionRegistered,
+            )}
           </p>
         </RegisterInformationContainer>
 
@@ -81,10 +95,10 @@ export default function TransactionPage() {
                 color={theme.colors.orange[800]}
               />
             </LoadingContainer>
-          ) : data?.getTransactions ? (
+          ) : getAlltransactionData?.getTransactions ? (
             <Scrollbars style={{ height: '50vh' }}>
               <TransactionsContainer>
-                {data?.getTransactions.map(transaction => {
+                {getAlltransactionData?.getTransactions.map(transaction => {
                   const transactionMapped = {
                     id: transaction?.id as string,
                     type: transaction?.type as string,

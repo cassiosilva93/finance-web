@@ -1,7 +1,7 @@
 import { ValueHelper } from '@src/helpers/ValueHelper';
 import React from 'react';
 import { Container, Header } from './style';
-import BoxSummaryContentProps from './types';
+import { BoxSummaryContentProps } from './types';
 
 export default function BoxSummary({
   title,
