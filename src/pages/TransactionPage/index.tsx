@@ -6,11 +6,11 @@ import TransactionItem from '@src/components/TransactionItem';
 import { DateHelper } from '@src/helpers/DateHelper';
 import MainLayoult from '@src/layouts/MainLayout';
 import {
-  useGetAllTransactionsLazyQuery,
+  useGetAllTransactionsQuery,
   useGetTransactionInfoQuery,
 } from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import ReactLoading from 'react-loading';
 import {
@@ -30,18 +30,9 @@ export default function TransactionPage() {
     setIsVisibleCreateNewTransactionModal,
   ] = useState(false);
 
-  const [getAllTransactions, { data: getAlltransactionData, loading }] =
-    useGetAllTransactionsLazyQuery();
-
+  const { data: getAlltransactionData, loading: getAlltransactionLoading } =
+    useGetAllTransactionsQuery();
   const { data: getTransactionInfoData } = useGetTransactionInfoQuery();
-
-  useEffect(() => {
-    async function getTransactions() {
-      await getAllTransactions();
-    }
-
-    getTransactions();
-  }, []);
 
   function handleShowEditTransactionModal() {
     setIsVisibleEditTransactionModal(prev => !prev);
@@ -80,15 +71,18 @@ export default function TransactionPage() {
 
           <p className="last-transaction">
             <strong>Última transação:</strong>{' '}
-            {DateHelper.formatToBRDate(
-              getTransactionInfoData?.getConsolidedValues
-                ?.lastTransactionRegistered,
-            )}
+            {getTransactionInfoData?.getConsolidedValues
+              ?.lastTransactionRegistered
+              ? DateHelper.formatToBRDate(
+                  getTransactionInfoData?.getConsolidedValues
+                    ?.lastTransactionRegistered,
+                )
+              : '--'}
           </p>
         </RegisterInformationContainer>
 
         <Content>
-          {loading ? (
+          {getAlltransactionLoading ? (
             <LoadingContainer>
               <ReactLoading
                 type={'spinningBubbles'}
