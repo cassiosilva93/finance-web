@@ -1,6 +1,6 @@
 import { ValueHelper } from '@src/helpers/ValueHelper';
 import React from 'react';
-import { Container, Header } from './style';
+import { Container, Header, Value } from './style';
 import { BoxSummaryContentProps } from './types';
 
 export default function BoxSummary({
@@ -8,6 +8,7 @@ export default function BoxSummary({
   value,
   color,
   icon,
+  changeColor,
 }: BoxSummaryContentProps) {
   return (
     <Container>
@@ -20,7 +21,9 @@ export default function BoxSummary({
         })}
       </Header>
 
-      <h1>{ValueHelper.formatToBRLCurrency(value)}</h1>
+      <Value changeColor={changeColor} isPositiveValue={value > 0}>
+        {ValueHelper.formatToBRLCurrency(value)}
+      </Value>
     </Container>
   );
 }

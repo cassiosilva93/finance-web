@@ -5,4 +5,5 @@ export interface BoxSummaryContentProps {
   value: number;
   color: string;
   icon: IconType;
+  changeColor?: boolean;
 }
