@@ -31,6 +31,7 @@ export default function TransactionItem({
     <>
       <Container>
         <AiOutlineDollar
+          className="icon"
           size={40}
           color={
             type === 'outcome' ? theme.colors.red[900] : theme.colors.green[900]

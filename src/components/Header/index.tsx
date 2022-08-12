@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <>
       <Container>
-        <Welcome>
+        <Welcome className="welcome">
           <h1>
             Bem-vindo(a), <span>Cassio</span>
           </h1>
