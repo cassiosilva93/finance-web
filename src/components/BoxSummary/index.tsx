@@ -21,7 +21,7 @@ export default function BoxSummary({
         })}
       </Header>
 
-      <Value changeColor={changeColor} isPositiveValue={value > 0}>
+      <Value changeColor={changeColor} value={value}>
         {ValueHelper.formatToBRLCurrency(value)}
       </Value>
     </Container>
