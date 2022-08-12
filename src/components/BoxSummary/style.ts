@@ -17,15 +17,17 @@ export const Header = styled.div`
 
 export const Value = styled.h1<{
   changeColor?: boolean;
-  isPositiveValue: boolean;
+  value: number;
 }>`
   font-weight: bold;
   font-size: 1.68rem;
-  color: ${({ changeColor, isPositiveValue }) =>
-    changeColor && isPositiveValue
+  color: ${({ changeColor, value }) =>
+    changeColor && value > 0
       ? theme.colors.green[900]
       : changeColor
-      ? theme.colors.red[900]
-      : theme.colors.gray[700]};};
+      ? value === 0
+        ? theme.colors.gray[700]
+        : theme.colors.red[800]
+      : theme.colors.gray[700]}};
 
 `;
