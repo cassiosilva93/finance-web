@@ -34,6 +34,18 @@ export default function TransactionPage() {
     useGetAllTransactionsQuery();
   const { data: getTransactionInfoData } = useGetTransactionInfoQuery();
 
+  const transactionMapped = getAlltransactionData?.getTransactions.map(
+    transaction => {
+      return {
+        id: transaction?.id as string,
+        type: transaction?.type as string,
+        title: transaction?.title as string,
+        date: transaction?.created_at as string,
+        value: transaction?.value as number,
+      };
+    },
+  );
+
   function handleShowEditTransactionModal() {
     setIsVisibleEditTransactionModal(prev => !prev);
   }
@@ -89,25 +101,15 @@ export default function TransactionPage() {
                 color={theme.colors.orange[800]}
               />
             </LoadingContainer>
-          ) : getAlltransactionData?.getTransactions ? (
+          ) : getAlltransactionData?.getTransactions.length ? (
             <Scrollbars style={{ height: '50vh' }}>
               <TransactionsContainer>
-                {getAlltransactionData?.getTransactions.map(transaction => {
-                  const transactionMapped = {
-                    id: transaction?.id as string,
-                    type: transaction?.type as string,
-                    title: transaction?.title as string,
-                    date: transaction?.created_at as string,
-                    value: transaction?.value as number,
-                  };
-
-                  return (
-                    <TransactionItem
-                      transaction={transactionMapped}
-                      key={transactionMapped.id}
-                    />
-                  );
-                })}
+                {transactionMapped?.map(transaction => (
+                  <TransactionItem
+                    transaction={transaction}
+                    key={transaction.id}
+                  />
+                ))}
               </TransactionsContainer>
             </Scrollbars>
           ) : (
