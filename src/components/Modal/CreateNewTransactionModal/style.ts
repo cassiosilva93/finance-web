@@ -17,7 +17,7 @@ export const Content = styled.div`
     border: none;
     border-radius: 5px;
     padding: 0 10px;
-    font-size: 15px;
+    font-size: 0.93rem;
     color: ${theme.colors.gray[700]};
 
     & + input {
@@ -56,7 +56,7 @@ export const ModalFooter = styled.div`
     border-radius: 5px;
     height: 40px;
     width: 150px;
-    font-size: 15px;
+    font-size: 0.93rem;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
     justify-content: center;
@@ -71,7 +71,7 @@ export const ModalFooter = styled.div`
 
 export const CancelContainer = styled.a`
   margin-right: 30px;
-  font-size: 15px;
+  font-size: 0.93rem;
   cursor: pointer;
   transition: color 0.3s;
 
@@ -89,7 +89,7 @@ export const TransactionTypeContainer = styled.div`
   span {
     display: inline-block;
     margin-right: 15px;
-    font-size: 15px;
+    font-size: 0.93rem;
   }
 `;
 

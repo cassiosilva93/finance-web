@@ -4,6 +4,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding: 0 120px;
   margin-top: 30px;
+
+  @media (max-width: 998px) and (max-width: 840px) {
+    padding: 0 50px;
+  }
+
+  @media (max-width: 426px) {
+    padding: 0px 20px 0 20px;
+  }
 `;
 
 export const AddTransactionContainer = styled.div`
@@ -18,6 +26,11 @@ export const AddTransactionContainer = styled.div`
   button:last-child {
     border-radius: 0px 5px 5px 0px;
   }
+
+  @media (max-width: 998px) and (max-width: 840px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const RegisterInformationContainer = styled.div`
@@ -30,7 +43,7 @@ export const RegisterInformationContainer = styled.div`
   }
 
   .last-transaction {
-    font-size: 13px;
+    font-size: 0.81rem;
   }
 `;
 

@@ -17,7 +17,7 @@ export const Container = styled.button<ContainerButtonProps>`
       ? theme.colors.txt
       : theme.colors.gray[700]};
   border: 0;
-  font-size: 15px;
+  font-size: 0.93rem;
   transition: background-color 0.3s;
 
   &:hover {

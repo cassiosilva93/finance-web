@@ -5,6 +5,6 @@ export const Container = styled.div`
 
   p {
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;

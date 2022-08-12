@@ -7,7 +7,7 @@ export const Container = styled.div`
     border: none;
     background-color: transparent;
     color: ${theme.colors.orange[700]};
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-left: 7px;
     transition: color 0.3s;
     text-decoration: underline;
@@ -29,10 +29,10 @@ export const FileInfo = styled.div`
   }
 
   span {
-    font-size: 14px;
+    font-size: 0.87rem;
   }
 
   strong {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;

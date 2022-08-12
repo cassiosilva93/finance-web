@@ -4,12 +4,34 @@ import styled from 'styled-components';
 export const Container = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 0 120px;
-  margin-top: 20px;
+  padding: 15px 120px;
+  background-color: ${theme.colors.gray[900]};
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  @media (max-width: 998px) and (max-width: 840px) {
+    padding: 15px 50px 0 50px;
+
+    .welcome {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding-bottom: 15px;
+  }
+
+  @media (max-width: 426px) {
+    padding: 15px 20px 0 20px;
+    padding-bottom: 15px;
+  }
 `;
 
 export const Welcome = styled.div`
-  font-size: 12px;
+  font-size: 0.75rem;
   width: 70%;
 
   h1 span {
@@ -17,13 +39,13 @@ export const Welcome = styled.div`
   }
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;
 
 export const UserArea = styled.div`
   display: flex;
-  font-size: 14px;
+  font-size: 0.87rem;
 `;
 
 export const UserInfo = styled.div`
@@ -33,7 +55,7 @@ export const UserInfo = styled.div`
   margin: 0 30px 0 10px;
 
   .name {
-    font-size: 16px;
+    font-size: 1rem;
     color: ${theme.colors.orange[800]};
   }
 `;

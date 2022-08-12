@@ -58,6 +58,7 @@ export default function MainLayoult({ children }: MainLayoutProps) {
             Dashboard
           </Button>
         </Link>
+
         <Link to="/transactions">
           <Button
             className="transactions"

@@ -16,8 +16,10 @@ export const Container = styled.article`
     background-color: ${transparentize(0.3, theme.colors.gray[800])};
   }
 
-  body::-webkit-scrollbar {
-    background: orange;
+  @media (max-width: 426px) {
+    .icon {
+      display: none;
+    }
   }
 `;
 
@@ -32,7 +34,11 @@ export const LeftInfo = styled.div`
   margin-left: 25px;
 
   strong {
-    font-size: 12px;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 426px) {
+    margin-left: 0;
   }
 `;
 

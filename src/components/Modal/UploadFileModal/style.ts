@@ -6,7 +6,7 @@ export const Content = styled.div`
   padding: 20px;
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   .info-drag-and-drop {
@@ -19,7 +19,7 @@ export const ModalBody = styled.div`
   flex-direction: column;
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
     text-align: center;
 
     span {
@@ -46,7 +46,7 @@ export const ModalFooter = styled.div`
     border-radius: 5px;
     height: 40px;
     width: 150px;
-    font-size: 15px;
+    font-size: 0.93rem;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
     justify-content: center;
@@ -62,7 +62,7 @@ export const ModalFooter = styled.div`
 
 export const CancelContainer = styled.a`
   margin-right: 30px;
-  font-size: 15px;
+  font-size: 0.93rem;
   cursor: pointer;
   transition: color 0.3s;
 
@@ -119,7 +119,7 @@ export const RemoveTransactionContainer = styled.div`
   align-items: center;
   background-color: ${transparentize(0.8, '#8C8C8C')};
   padding: 5px;
-  font-size: 11px;
+  font-size: 0.68rem;
   border-radius: 5px;
   transition: background-color 0.3s;
   cursor: pointer;
