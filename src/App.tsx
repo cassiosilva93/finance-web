@@ -16,7 +16,7 @@ function App() {
         <ToastContainer
           toastStyle={{
             backgroundColor: theme.colors.gray[800],
-            color: theme.colors.txt,
+            color: theme.colors.gray[700],
           }}
         />
       </BrowserRouter>
