@@ -58,7 +58,8 @@ export default function UploadFileModal({
     try {
       if (!file) return;
       await createTransactionFile(file);
-      return toast.success('Arquivo salvo com sucesso.');
+      toast.success('Arquivo salvo com sucesso.');
+      setFile(null);
     } catch {
       toast.error('Ocorreu um erro ao salvar o arquivo.');
     }
