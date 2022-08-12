@@ -1,7 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@src/components/Button';
 import ErrorInput from '@src/components/ErrorInput';
-import { useCreateNewTransactionMutation } from '@src/services/graphql/generated/schema';
+import {
+  GetAllTransactionsDocument,
+  GetTransactionInfoDocument,
+  useCreateNewTransactionMutation,
+} from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -33,6 +37,7 @@ export default function CreateNewTransactionModal({
     handleSubmit,
     register,
     formState: { errors, isDirty, isValid },
+    reset,
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -50,8 +55,13 @@ export default function CreateNewTransactionModal({
           value: Number(value),
           type,
         },
+        refetchQueries: [
+          { query: GetAllTransactionsDocument },
+          { query: GetTransactionInfoDocument },
+        ],
       });
       toast.success('Transação salva com sucesso.');
+      reset();
     } catch {
       toast.error('Ocorreu um erro ao salvar a transação.');
     }
