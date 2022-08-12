@@ -30,7 +30,7 @@ export const RegisterInformationContainer = styled.div`
   }
 
   .last-transaction {
-    font-size: 13px;
+    font-size: 0.81rem;
   }
 `;
 

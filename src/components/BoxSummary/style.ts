@@ -20,11 +20,12 @@ export const Value = styled.h1<{
   isPositiveValue: boolean;
 }>`
   font-weight: bold;
-  font-size: 27px;
+  font-size: 1.68rem;
   color: ${({ changeColor, isPositiveValue }) =>
     changeColor && isPositiveValue
       ? theme.colors.green[900]
       : changeColor
       ? theme.colors.red[900]
       : theme.colors.gray[700]};};
+
 `;

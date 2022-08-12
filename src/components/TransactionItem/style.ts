@@ -32,7 +32,7 @@ export const LeftInfo = styled.div`
   margin-left: 25px;
 
   strong {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;
 

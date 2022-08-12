@@ -4,6 +4,7 @@ export const MainContainer = styled.main`
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  padding: 0 120px;
 
   section + section {
     margin-left: 3px;

@@ -9,7 +9,7 @@ export const Container = styled.header`
 `;
 
 export const Welcome = styled.div`
-  font-size: 12px;
+  font-size: 0.75rem;
   width: 70%;
 
   h1 span {
@@ -17,13 +17,13 @@ export const Welcome = styled.div`
   }
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 `;
 
 export const UserArea = styled.div`
   display: flex;
-  font-size: 14px;
+  font-size: 0.87rem;
 `;
 
 export const UserInfo = styled.div`
@@ -33,7 +33,7 @@ export const UserInfo = styled.div`
   margin: 0 30px 0 10px;
 
   .name {
-    font-size: 16px;
+    font-size: 1rem;
     color: ${theme.colors.orange[800]};
   }
 `;
