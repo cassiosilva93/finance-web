@@ -16,7 +16,7 @@ export const Container = styled.article`
     background-color: ${transparentize(0.3, theme.colors.gray[800])};
   }
 
-  @media (max-width: 426px) {
+  @media (max-width: 932px) {
     .icon {
       display: none;
     }
@@ -32,6 +32,14 @@ export const TransactionInfoContainer = styled.div`
 
 export const LeftInfo = styled.div`
   margin-left: 25px;
+  min-width: 0;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+  }
 
   strong {
     font-size: 0.75rem;
