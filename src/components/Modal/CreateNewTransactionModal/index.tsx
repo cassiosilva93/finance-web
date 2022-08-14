@@ -3,6 +3,7 @@ import Button from '@src/components/Button';
 import ErrorInput from '@src/components/ErrorInput';
 import {
   GetAllTransactionsDocument,
+  GetBoxSummaryInfoDocument,
   GetTransactionInfoDocument,
   useCreateNewTransactionMutation,
 } from '@src/services/graphql/generated/schema';
@@ -58,6 +59,7 @@ export default function CreateNewTransactionModal({
         refetchQueries: [
           { query: GetAllTransactionsDocument },
           { query: GetTransactionInfoDocument },
+          { query: GetBoxSummaryInfoDocument },
         ],
       });
       toast.success('Transação salva com sucesso.');
