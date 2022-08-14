@@ -14,7 +14,7 @@
 <br>
 
 <div align="center">
-  <a href="https://ibb.co/gRhJm8j"><img src="https://i.ibb.co/1mjT7Nv/view.png" alt="view" border="0"></a>
+  ![demo_AdobeExpress](https://user-images.githubusercontent.com/84540134/184539881-3410c15c-d505-42c7-b6f6-152cd8cbf15d.gif)
 </div>
 
 <br>
@@ -25,6 +25,19 @@
 - TypeScript
 - Styled Components
 - Jest
+- Codegen
+- Vite
+- Apollo Client
+- Axios
+
+## Features
+
+- Add transaction
+- Delete transaction
+- Update transaction
+- Upload transactions with csv file
+- 
+
 
 <br>
 
