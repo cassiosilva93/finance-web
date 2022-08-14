@@ -4,7 +4,7 @@ interface ModalProps {
   handleCloseModal: () => void;
 }
 
-interface FileProps extends File {
+interface FileProps {
   name: string;
   size: number;
 }
