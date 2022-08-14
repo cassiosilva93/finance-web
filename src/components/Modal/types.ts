@@ -1,4 +1,5 @@
 interface ModalProps {
+  transactionId?: string;
   isVisibleModal: boolean;
   handleCloseModal: () => void;
 }
