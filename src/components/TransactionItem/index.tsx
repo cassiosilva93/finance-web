@@ -14,7 +14,7 @@ import {
 import { TransactionItemProps } from './types';
 
 export default function TransactionItem({
-  transaction: { date, title, type, value },
+  transaction: { id, date, title, type, value },
 }: TransactionItemProps) {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const transactionInfoFormatted = {
@@ -53,6 +53,7 @@ export default function TransactionItem({
       </Container>
 
       <EditTransactionModal
+        transactionId={id}
         isVisibleModal={isVisibleModal}
         handleCloseModal={handleShowModal}
       />

@@ -4,6 +4,7 @@ import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
 import { FaTrash } from 'react-icons/fa';
 import ReactModal from 'react-modal';
+import ConfirmDeleteModal from '../ConfirmDeleteModal';
 import { ModalProps } from '../types';
 import {
   CancelContainer,
@@ -16,10 +17,17 @@ import {
 } from './style';
 
 export default function EditTransactionModal({
+  transactionId,
   isVisibleModal,
   handleCloseModal,
 }: ModalProps) {
   const [type, setType] = useState('income');
+  const [isVisibleConfirmDeleteModal, setIsVisibleConfirmDeleteModal] =
+    useState(false);
+
+  function handleShowConfirmDeleteModal() {
+    setIsVisibleConfirmDeleteModal(prev => !prev);
+  }
 
   function handleEditTransaction(event: FormEvent) {
     event.preventDefault();
@@ -78,9 +86,11 @@ export default function EditTransactionModal({
         </Content>
 
         <ModalFooter>
-          <RemoveTransactionContainer>
+          <RemoveTransactionContainer
+            onClick={() => handleShowConfirmDeleteModal()}
+          >
             <FaTrash />
-            <a onClick={() => {}}>Excluir</a>
+            <a>Excluir</a>
           </RemoveTransactionContainer>
 
           <div>
@@ -91,6 +101,14 @@ export default function EditTransactionModal({
           </div>
         </ModalFooter>
       </form>
+
+      {isVisibleConfirmDeleteModal && (
+        <ConfirmDeleteModal
+          transactionId={transactionId}
+          isVisibleModal={isVisibleConfirmDeleteModal}
+          handleCloseModal={handleShowConfirmDeleteModal}
+        />
+      )}
     </ReactModal>
   );
 }
