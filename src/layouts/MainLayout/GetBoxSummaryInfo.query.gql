@@ -1,6 +1,0 @@
-query GetBoxSummaryInfo {
-  getConsolidedValues {
-    totalIncome
-    totalOutcome
-  }
-}

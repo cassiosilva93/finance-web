@@ -1,7 +1,7 @@
 module.exports = {
   overwrite: true,
   schema: `${process.env.VITE_API_FINANCE_URL}/graphql`,
-  documents: '**/*.{gql,graphql}',
+  documents: '**/*.(mutation|query).ts',
   generates: {
     'src/services/graphql/generated/schema.ts': {
       plugins: [

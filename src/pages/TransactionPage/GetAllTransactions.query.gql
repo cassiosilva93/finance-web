@@ -1,9 +1,0 @@
-query GetAllTransactions {
-  getTransactions {
-    id
-    type
-    title
-    created_at
-    value
-  }
-}

@@ -27,7 +27,7 @@ export default function UploadFileModal({
   handleCloseModal,
   isVisibleModal,
 }: ModalProps) {
-  const [file, setFile] = useState<FileProps | null>(null);
+  const [file, setFile] = useState<FileProps | File | null>(null);
 
   const {
     handleSubmit,
