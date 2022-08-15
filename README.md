@@ -25,6 +25,19 @@
 - TypeScript
 - Styled Components
 - Jest
+- Codegen
+- Vite
+- Apollo Client
+- Axios
+
+## Features
+
+- Add transaction
+- Delete transaction
+- Update transaction
+- Upload transactions with csv file
+- 
+
 
 <br>
 
