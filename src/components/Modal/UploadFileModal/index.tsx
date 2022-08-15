@@ -109,7 +109,7 @@ export default function UploadFileModal({
             <FileUploaded name={file.name} size={file.size} />
             <RemoveTransactionContainer onClick={() => setFile(null)}>
               <FaTrash />
-              <a href="/#">Excluir</a>
+              <a>Excluir</a>
             </RemoveTransactionContainer>
           </FileUploadedContainer>
         )}

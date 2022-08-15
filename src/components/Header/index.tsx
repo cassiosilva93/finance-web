@@ -32,7 +32,7 @@ export default function Header() {
         </UserArea>
 
         <IconLogout>
-          <a href="/#">
+          <a>
             <AiOutlinePoweroff size={25} onClick={handleShowLogoutModal} />
           </a>
         </IconLogout>

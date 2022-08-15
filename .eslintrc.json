@@ -28,6 +28,7 @@
     "react/jsx-no-bind": "off",
     "@typescript-eslint/no-empty-function": "off",
     "no-nested-ternary": "off",
+    "jsx-a11y/anchor-is-valid": "off",
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "no-use-before-define": "off",
