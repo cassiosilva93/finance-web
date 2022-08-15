@@ -56,7 +56,7 @@ export const RightInfo = styled.div<RightInfoProps>`
   p {
     display: flex;
     align-items: center;
-    margin-right: 50px;
+    margin: 0 20px 0 20px;
     color: ${({ type }) =>
       type === 'outcome' ? theme.colors.red[900] : theme.colors.green[900]};
   }

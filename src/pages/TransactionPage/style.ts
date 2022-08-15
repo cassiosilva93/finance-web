@@ -50,11 +50,12 @@ export const RegisterInformationContainer = styled.div`
 export const TransactionsContainer = styled.div`
   article + article {
     margin-top: 15px;
+    width: 100%;
   }
 `;
 
 export const Content = styled.div`
-  padding: 0 0 30px 0;
+  padding-bottom: 30px;
 
   display: flex;
   align-items: center;
