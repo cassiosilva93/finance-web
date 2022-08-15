@@ -36,7 +36,7 @@ export default function UploadFileModal({
 
   const onDrop = useCallback((acceptedFile: any) => {
     if (!acceptedFile.length) return toast.error('Arquivo não suportado.');
-    setFile(acceptedFile[0]);
+    return setFile(acceptedFile[0]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
@@ -48,7 +48,7 @@ export default function UploadFileModal({
       },
     });
 
-  function iconColor(isDragActive: boolean, isDragReject: boolean) {
+  function iconColor() {
     if (!isDragActive) return theme.colors.orange[800];
     if (isDragReject) return theme.colors.red[900];
     return theme.colors.green[900];
@@ -95,10 +95,7 @@ export default function UploadFileModal({
               isDragReject={isDragReject}
             >
               <input {...getInputProps()} />
-              <IoMdCloudUpload
-                size={60}
-                color={iconColor(isDragActive, isDragReject)}
-              />
+              <IoMdCloudUpload size={60} color={iconColor()} />
               <DropzoneContentMessage
                 isDragActive={isDragActive}
                 isDragReject={isDragReject}
@@ -112,7 +109,7 @@ export default function UploadFileModal({
             <FileUploaded name={file.name} size={file.size} />
             <RemoveTransactionContainer onClick={() => setFile(null)}>
               <FaTrash />
-              <a>Excluir</a>
+              <a href="/#">Excluir</a>
             </RemoveTransactionContainer>
           </FileUploadedContainer>
         )}
@@ -122,9 +119,9 @@ export default function UploadFileModal({
             <CancelContainer onClick={handleCloseModal}>
               Cancelar
             </CancelContainer>
-            <Button type="submit" disabled={isSubmitting || !Boolean(file)}>
+            <Button type="submit" disabled={isSubmitting || !file}>
               {isSubmitting ? (
-                <ReactLoading type={'spin'} height={20} width={20} />
+                <ReactLoading type="spin" height={20} width={20} />
               ) : (
                 'Salvar'
               )}

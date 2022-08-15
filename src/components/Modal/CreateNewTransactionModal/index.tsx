@@ -149,7 +149,7 @@ export default function CreateNewTransactionModal({
             </CancelContainer>
             <Button type="submit" disabled={loading || !isDirty || !isValid}>
               {loading ? (
-                <ReactLoading type={'spin'} height={20} width={20} />
+                <ReactLoading type="spin" height={20} width={20} />
               ) : (
                 'Salvar'
               )}

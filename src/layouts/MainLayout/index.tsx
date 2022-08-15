@@ -44,7 +44,7 @@ export default function MainLayoult({ children }: MainLayoutProps) {
           value={total}
           color={theme.colors.orange[800]}
           icon={FiDollarSign}
-          changeColor={true}
+          changeColor
         />
       </MainContainer>
 

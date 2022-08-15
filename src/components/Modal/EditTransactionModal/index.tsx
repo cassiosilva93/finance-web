@@ -90,7 +90,7 @@ export default function EditTransactionModal({
             onClick={() => handleShowConfirmDeleteModal()}
           >
             <FaTrash />
-            <a>Excluir</a>
+            <a href="/#">Excluir</a>
           </RemoveTransactionContainer>
 
           <div>

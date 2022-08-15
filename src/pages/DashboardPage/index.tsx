@@ -5,8 +5,8 @@ export default function DashboardPage() {
   return (
     <MainLayoult>
       <Container>
-        <MainDashboard></MainDashboard>
-        <SideDashboard></SideDashboard>
+        <MainDashboard />
+        <SideDashboard />
       </Container>
     </MainLayoult>
   );

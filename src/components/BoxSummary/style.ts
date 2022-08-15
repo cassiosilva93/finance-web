@@ -21,13 +21,9 @@ export const Value = styled.h1<{
 }>`
   font-weight: bold;
   font-size: 1.68rem;
-  color: ${({ changeColor, value }) =>
-    changeColor && value > 0
-      ? theme.colors.green[900]
-      : changeColor
-      ? value === 0
-        ? theme.colors.gray[700]
-        : theme.colors.red[800]
-      : theme.colors.gray[700]}};
-
+  color: ${({ changeColor, value }) => {
+    if (changeColor && value > 0) return theme.colors.green[900];
+    if (!changeColor || value === 0) return theme.colors.gray[700];
+    return theme.colors.red[800];
+  }}};
 `;

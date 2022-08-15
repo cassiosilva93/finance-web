@@ -97,7 +97,7 @@ export default function TransactionPage() {
           {getAlltransactionLoading ? (
             <LoadingContainer>
               <ReactLoading
-                type={'spinningBubbles'}
+                type="spinningBubbles"
                 color={theme.colors.orange[800]}
               />
             </LoadingContainer>
