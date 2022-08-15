@@ -17,9 +17,9 @@ export const MainContainer = styled.main`
     border-radius: 0px 10px 10px 0px;
   }
 
-  @media (max-width: 998px) and (max-width: 840px) {
+  @media (max-width: 1150px) {
     flex-wrap: wrap;
-    padding: 100px 50px 0 50px;
+    padding: 100px 120px 0 120px;
 
     section {
       width: 100%;
@@ -37,6 +37,10 @@ export const MainContainer = styled.main`
     section:last-child {
       border-radius: 0 0 10px 10px;
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 100px 50px 0 50px;
   }
 
   @media (max-width: 426px) {

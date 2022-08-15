@@ -19,6 +19,10 @@ export const Value = styled.h1<{
   changeColor?: boolean;
   value: number;
 }>`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 30px;
   font-weight: bold;
   font-size: 1.68rem;
   color: ${({ changeColor, value }) => {
