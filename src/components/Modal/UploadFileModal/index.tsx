@@ -2,6 +2,11 @@ import Button from '@src/components/Button';
 import DropzoneContentMessage from '@src/components/DropzoneContentMessage';
 import FileUploaded from '@src/components/FileUploaded';
 import { createTransactionFile } from '@src/services/axios/CreateTransactionFile';
+import {
+  useGetAllTransactionsLazyQuery,
+  useGetBoxSummaryInfoLazyQuery,
+  useGetTransactionInfoLazyQuery,
+} from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -28,6 +33,9 @@ export default function UploadFileModal({
   isVisibleModal,
 }: ModalProps) {
   const [file, setFile] = useState<FileProps | File | null>(null);
+  const [getAllTransactionsLazyQuery] = useGetAllTransactionsLazyQuery();
+  const [getBoxSummaryInfoLazyQuery] = useGetBoxSummaryInfoLazyQuery();
+  const [getTransactionInfoLazyQuery] = useGetTransactionInfoLazyQuery();
 
   const {
     handleSubmit,
@@ -54,12 +62,19 @@ export default function UploadFileModal({
     return theme.colors.green[900];
   }
 
+  function refetchQuerysToUpdateScreen() {
+    getTransactionInfoLazyQuery().then(res => res.refetch());
+    getBoxSummaryInfoLazyQuery().then(res => res.refetch());
+    getAllTransactionsLazyQuery().then(res => res.refetch());
+  }
+
   async function onSubmit() {
     try {
       if (!file) return;
       await createTransactionFile(file);
       toast.success('Arquivo salvo com sucesso.');
       setFile(null);
+      refetchQuerysToUpdateScreen();
     } catch {
       toast.error('Ocorreu um erro ao salvar o arquivo.');
     }
