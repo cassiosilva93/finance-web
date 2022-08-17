@@ -39,6 +39,11 @@ export const LeftInfo = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     padding-right: 10px;
+
+    em {
+      font-size: 12px;
+      color: ${transparentize(0.3, theme.colors.orange[700])};
+    }
   }
 
   strong {
