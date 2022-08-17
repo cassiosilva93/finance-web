@@ -14,12 +14,10 @@
 <br>
 
 <div align="center">
-  <table>
-    <tr>
-      <td valign="top"><img src="https://i.ibb.co/2jrn3Tf/Screenshot-14-removebg-preview.png" alt="Screenshot-14-removebg-preview" border="0"></td>
-      <td valign="top"><img src="https://i.ibb.co/022KwZF/Screenshot33-removebg-preview.png" alt="Screenshot33-removebg-preview" border="0"></td>
-    </tr>
-</table>
+  <div>
+    <img src="https://i.ibb.co/2jrn3Tf/Screenshot-14-removebg-preview.png" alt="Screenshot-14-removebg-preview" border="0">
+    <img src="https://i.ibb.co/022KwZF/Screenshot33-removebg-preview.png" alt="Screenshot33-removebg-preview" border="0">
+</div>
 </a>
 
 </div>
