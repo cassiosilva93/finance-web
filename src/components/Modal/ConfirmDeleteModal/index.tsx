@@ -53,7 +53,12 @@ export default function ConfirmDeleteModal({
         <CgClose size={20} color={theme.colors.gray[700]} />
       </button>
 
-      <ModalBody>Tem certeza que deseja excluir esse registro?</ModalBody>
+      <ModalBody>
+        <p>
+          Tem certeza que deseja excluir o registro{' '}
+          <em>{transaction?.title}</em> ?
+        </p>
+      </ModalBody>
 
       <ModalFooter>
         <div>

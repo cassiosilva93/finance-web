@@ -54,4 +54,9 @@ export const ModalBody = styled.div`
   justify-content: center;
   align-items: center;
   height: 150px;
+  text-align: center;
+
+  em {
+    color: ${theme.colors.orange[700]};
+  }
 `;
