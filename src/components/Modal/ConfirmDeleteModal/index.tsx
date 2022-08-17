@@ -14,7 +14,7 @@ import { ModalProps } from '../types';
 import { CancelContainer, ModalBody, ModalFooter } from './style';
 
 export default function ConfirmDeleteModal({
-  transactionId,
+  transaction,
   isVisibleModal,
   handleCloseModal,
 }: ModalProps) {
@@ -60,8 +60,8 @@ export default function ConfirmDeleteModal({
           <CancelContainer onClick={handleCloseModal}>Cancelar</CancelContainer>
           <Button
             onClick={() => {
-              if (!transactionId) return;
-              handleDelete(transactionId);
+              if (!transaction?.id) return;
+              handleDelete(transaction.id);
             }}
           >
             {loading ? (

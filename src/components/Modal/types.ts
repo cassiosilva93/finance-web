@@ -1,5 +1,14 @@
+interface Transaction {
+  id: string;
+  type: string;
+  title: string;
+  date: string;
+  value: number;
+  category: string;
+}
+
 interface ModalProps {
-  transactionId?: string;
+  transaction?: Transaction;
   isVisibleModal: boolean;
   handleCloseModal: () => void;
 }

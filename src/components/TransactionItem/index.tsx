@@ -14,7 +14,7 @@ import {
 import { TransactionItemProps } from './types';
 
 export default function TransactionItem({
-  transaction: { id, date, title, type, value },
+  transaction: { id, date, title, type, value, category },
 }: TransactionItemProps) {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const transactionInfoFormatted = {
@@ -41,6 +41,9 @@ export default function TransactionItem({
         <TransactionInfoContainer>
           <LeftInfo>
             <p>{title}</p>
+            <p>
+              <em className="category">{category}</em>
+            </p>
             <strong>{`${transactionInfoFormatted.date} ${transactionInfoFormatted.hour}`}</strong>
           </LeftInfo>
 
@@ -52,11 +55,13 @@ export default function TransactionItem({
         </TransactionInfoContainer>
       </Container>
 
-      <EditTransactionModal
-        transactionId={id}
-        isVisibleModal={isVisibleModal}
-        handleCloseModal={handleShowModal}
-      />
+      {isVisibleModal && (
+        <EditTransactionModal
+          transaction={{ id, date, title, type, value, category }}
+          isVisibleModal={isVisibleModal}
+          handleCloseModal={handleShowModal}
+        />
+      )}
     </>
   );
 }
