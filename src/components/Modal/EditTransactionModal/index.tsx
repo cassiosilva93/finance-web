@@ -54,7 +54,7 @@ export default function EditTransactionModal({
 
   useEffect(() => {
     setType(transaction?.type);
-  }, []);
+  }, [transaction?.type]);
 
   function handleShowConfirmDeleteModal() {
     setIsVisibleConfirmDeleteModal(prev => !prev);
