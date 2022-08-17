@@ -14,7 +14,14 @@
 <br>
 
 <div align="center">
-  <a href="https://ibb.co/gRhJm8j"><img src="https://i.ibb.co/1mjT7Nv/view.png" alt="view" border="0"></a>
+  <table>
+    <tr>
+      <td valign="top"><img src="https://i.ibb.co/2jrn3Tf/Screenshot-14-removebg-preview.png" alt="Screenshot-14-removebg-preview" border="0"></td>
+      <td valign="top"><img src="https://i.ibb.co/022KwZF/Screenshot33-removebg-preview.png" alt="Screenshot33-removebg-preview" border="0"></td>
+    </tr>
+</table>
+</a>
+
 </div>
 
 <br>
@@ -36,8 +43,6 @@
 - Delete transaction
 - Update transaction
 - Upload transactions with csv file
-- 
-
 
 <br>
 
