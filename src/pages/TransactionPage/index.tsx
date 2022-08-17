@@ -42,6 +42,7 @@ export default function TransactionPage() {
         title: transaction?.title as string,
         date: transaction?.created_at as string,
         value: transaction?.value as number,
+        category: transaction?.category as string,
       };
     },
   );

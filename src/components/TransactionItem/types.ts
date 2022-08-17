@@ -5,6 +5,7 @@ interface TransactionItemProps {
     title: string;
     date: string;
     value: number;
+    category: string;
   };
 }
 

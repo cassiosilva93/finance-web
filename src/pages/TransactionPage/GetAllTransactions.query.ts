@@ -8,6 +8,7 @@ export const GET_ALL_TRANSACTIONS = gql`
       title
       created_at
       value
+      category
     }
   }
 `;
