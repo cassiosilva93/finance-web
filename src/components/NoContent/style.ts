@@ -10,7 +10,6 @@ export const Container = styled.div`
   color: ${transparentize(0.5, theme.colors.gray[700])};
 
   svg {
-    margin-bottom: 5px;
     color: ${transparentize(0.5, theme.colors.gray[700])};
   }
 
