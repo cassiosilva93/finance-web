@@ -1,9 +1,9 @@
 import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from '@src/services/clients/apolloClient';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Routers from './routes';
-import { apolloClient } from './services/clients/apolloClient';
 import GlobalStyle from './styles/global';
 import theme from './theme';
 
