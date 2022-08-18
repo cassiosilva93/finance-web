@@ -79,7 +79,10 @@ export default function TransactionPage() {
               {getTransactionInfoData?.getConsolidedValues
                 ?.totalTransactionRegister || 0}
             </strong>{' '}
-            Registros
+            {(getTransactionInfoData?.getConsolidedValues
+              ?.totalTransactionRegister as number) > 1
+              ? 'Registros'
+              : 'Registro'}
           </p>
 
           <p className="last-transaction">
