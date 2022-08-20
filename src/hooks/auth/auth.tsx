@@ -1,0 +1,62 @@
+import axiosClientApi from '@src/services/clients/axiosClient';
+import { useLoginLazyQuery } from '@src/services/graphql/generated/schema';
+import { createContext, useCallback, useContext, useState } from 'react';
+import { AuthContextData, AuthProviderProps, SignInCredentials } from './types';
+
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+
+function AuthProvider({ children }: AuthProviderProps) {
+  const [data, setData] = useState(() => {
+    const token = localStorage.getItem('@financeweb:token');
+    const user = localStorage.getItem('@financeweb:user');
+
+    if (token && user) {
+      axiosClientApi.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      return { token, user: JSON.parse(user) };
+    }
+
+    return {};
+  });
+
+  const [useLoginQuery] = useLoginLazyQuery();
+
+  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
+    const { data } = await useLoginQuery({
+      variables: { data: { email, password } },
+    });
+
+    const token = data?.login?.token as string;
+    const user = data?.login?.user;
+
+    localStorage.setItem('@financeweb:token', token);
+    localStorage.setItem('@financeweb:user', JSON.stringify(user));
+
+    axiosClientApi.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    setData({ token, user });
+  }, []);
+
+  const signOut = useCallback(() => {
+    localStorage.removeItem('@financeweb:token');
+    localStorage.removeItem('@financeweb:user');
+
+    setData({});
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+function useAuth(): AuthContextData {
+  const context = useContext(AuthContext);
+
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
+
+  return context;
+}
+
+export { AuthProvider, useAuth };

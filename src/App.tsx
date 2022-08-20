@@ -1,4 +1,5 @@
 import { ApolloProvider } from '@apollo/client';
+import { AuthProvider } from '@src/hooks/auth/auth';
 import { apolloClient } from '@src/services/clients/apolloClient';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -10,16 +11,18 @@ import theme from './theme';
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Routers />
-        <ToastContainer
-          toastStyle={{
-            backgroundColor: theme.colors.gray[800],
-            color: theme.colors.gray[700],
-          }}
-        />
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Routers />
+          <ToastContainer
+            toastStyle={{
+              backgroundColor: theme.colors.gray[800],
+              color: theme.colors.gray[700],
+            }}
+          />
+        </BrowserRouter>
+      </AuthProvider>
     </ApolloProvider>
   );
 }
