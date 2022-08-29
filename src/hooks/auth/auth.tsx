@@ -21,30 +21,28 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   const [useLoginQuery] = useLoginLazyQuery();
 
-  const signIn = useCallback(
-    async ({ email, password }: SignInCredentials): Promise<boolean> => {
-      const { data } = await useLoginQuery({
-        variables: { data: { email, password } },
-      });
+  async function signIn({
+    email,
+    password,
+  }: SignInCredentials): Promise<boolean> {
+    const { data: loginQueryData } = await useLoginQuery({
+      variables: { data: { email, password } },
+    });
 
-      const token = data?.login?.token as string;
-      const user = data?.login?.user;
+    const token = loginQueryData?.login?.token as string;
+    const user = loginQueryData?.login?.user;
 
-      if (!token && !user) return false;
+    if (!token && !user) return false;
 
-      localStorage.setItem('@financeweb:token', token);
-      localStorage.setItem('@financeweb:user', JSON.stringify(user));
+    localStorage.setItem('@financeweb:token', token);
+    localStorage.setItem('@financeweb:user', JSON.stringify(user));
 
-      axiosClientApi.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${token}`;
+    axiosClientApi.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-      setData({ token, user });
+    setData({ token, user });
 
-      return true;
-    },
-    [],
-  );
+    return true;
+  }
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@financeweb:token');

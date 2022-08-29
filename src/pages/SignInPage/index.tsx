@@ -4,8 +4,7 @@ import { useAuth } from '@src/hooks/auth/auth';
 import theme from '@src/theme';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { FaUserCircle } from 'react-icons/fa';
+import { AiFillEye, AiFillEyeInvisible, AiFillRocket } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Container, Form, NoHaveRegister } from './style';
@@ -24,14 +23,14 @@ export default function SignInPage() {
 
   async function onSubmit({ email, password }: FormProps) {
     const result = await signIn({ email, password });
-    if (!result) toast.error('Email ou senha incorreto.');
+    if (!result) return toast.error('Email ou senha incorreto.');
     navigate('/transactions');
   }
 
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FaUserCircle
+        <AiFillRocket
           size={70}
           style={{ color: theme.colors.orange[700], marginBottom: '30px' }}
         />
