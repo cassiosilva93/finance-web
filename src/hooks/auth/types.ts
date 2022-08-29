@@ -17,7 +17,8 @@ interface User {
 
 interface AuthContextData {
   user: User;
-  signIn(credentials: SignInCredentials): Promise<void>;
+  isLogged: boolean;
+  signIn(credentials: SignInCredentials): Promise<boolean>;
   signOut(): void;
 }
 
