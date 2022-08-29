@@ -53,6 +53,10 @@ export const LeftInfo = styled.div`
   @media (max-width: 426px) {
     margin-left: 0;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 export const RightInfo = styled.div<RightInfoProps>`
