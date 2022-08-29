@@ -33,6 +33,7 @@ export const Form = styled.form`
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
     margin-top: 20px;
+    display: flex;
 
     &:hover {
       background-color: ${transparentize(0.3, theme.colors.orange[700])};
