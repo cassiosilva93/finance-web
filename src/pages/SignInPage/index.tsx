@@ -1,41 +1,67 @@
 import Button from '@src/components/Button';
+import Input from '@src/components/Input';
 import { useAuth } from '@src/hooks/auth/auth';
+import theme from '@src/theme';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { FaUserCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Container, Form, NoHaveRegister } from './style';
 import FormProps from './types';
 
 export default function SignInPage() {
+  const [eyeIsOpen, setEyeIsOpen] = useState(false);
   const navigate = useNavigate();
   const { signIn } = useAuth();
   const { handleSubmit, register } = useForm<FormProps>({
     mode: 'onChange',
   });
 
+  const eyeIcon = eyeIsOpen ? AiFillEye : AiFillEyeInvisible;
+  const typePasswordInput = eyeIsOpen ? 'text' : 'password';
+
   async function onSubmit({ email, password }: FormProps) {
-    const token = await signIn({ email, password });
-    console.log(token);
+    const result = await signIn({ email, password });
+    if (!result) toast.error('Email ou senha incorreto.');
     navigate('/transactions');
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        type="email"
-        id="email"
-        placeholder="Email"
-        {...register('email')}
-      />
+    <Container>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <FaUserCircle
+          size={70}
+          style={{ color: theme.colors.orange[700], marginBottom: '30px' }}
+        />
 
-      <input
-        type="password"
-        id="password"
-        placeholder="Senha"
-        {...register('password')}
-      />
+        <Input type="email" id="email" title="E-mail" register={register} />
 
-      <Button type="submit" style={{ height: 40, width: 120 }}>
-        Entrar
-      </Button>
-    </form>
+        <Input
+          type={typePasswordInput}
+          id="password"
+          icon={eyeIcon}
+          title="Senha"
+          changeStateCallback={setEyeIsOpen}
+          register={register}
+        />
+
+        <Button type="submit" style={{ height: 40 }}>
+          Entrar
+        </Button>
+
+        <a href="#" className="forgot-password">
+          Esqueceu sua senha?
+        </a>
+
+        <NoHaveRegister>
+          Não tem cadastro?{' '}
+          <a href="#" className="no-have-register">
+            Cadastrar
+          </a>
+        </NoHaveRegister>
+      </Form>
+    </Container>
   );
 }
