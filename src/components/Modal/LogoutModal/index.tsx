@@ -1,4 +1,5 @@
 import Button from '@src/components/Button';
+import { useAuth } from '@src/hooks/auth/auth';
 import theme from '@src/theme';
 import { CgClose } from 'react-icons/cg';
 import ReactModal from 'react-modal';
@@ -9,7 +10,7 @@ export default function LogoutModal({
   isVisibleModal,
   handleCloseModal,
 }: ModalProps) {
-  function handleLogout() {}
+  const { signOut } = useAuth();
 
   return (
     <ReactModal
@@ -32,7 +33,7 @@ export default function LogoutModal({
       <ModalFooter>
         <div>
           <CancelContainer onClick={handleCloseModal}>Cancelar</CancelContainer>
-          <Button onClick={handleLogout}>Sair</Button>
+          <Button onClick={signOut}>Sair</Button>
         </div>
       </ModalFooter>
     </ReactModal>
