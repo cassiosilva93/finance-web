@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
     top: 20px;
     background-color: transparent;
     border: none;
-    transaction: filter 0.2s;
+    transition: filter 0.2s;
 
     &:hover {
       filter: brightness(0.8);
