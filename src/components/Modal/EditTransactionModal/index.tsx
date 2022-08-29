@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@src/components/Button';
-import ErrorInput from '@src/components/ErrorInput';
 import {
   GetAllTransactionsDocument,
   GetBoxSummaryInfoDocument,
@@ -22,7 +21,6 @@ import { schema } from './schema';
 import {
   CancelContainer,
   Content,
-  ErrorsContainer,
   ModalBody,
   ModalFooter,
   RadioBox,
@@ -43,7 +41,7 @@ export default function EditTransactionModal({
   const {
     handleSubmit,
     register,
-    formState: { errors, isDirty, isValid },
+    formState: { isDirty, isValid },
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -147,12 +145,6 @@ export default function EditTransactionModal({
             />
           </ModalBody>
         </Content>
-
-        <ErrorsContainer>
-          {errors.title && <ErrorInput message={errors.title.message} />}
-          {errors.value && <ErrorInput message={errors.value.message} />}
-          {errors.category && <ErrorInput message={errors.category.message} />}
-        </ErrorsContainer>
 
         <ModalFooter>
           <RemoveTransactionContainer
