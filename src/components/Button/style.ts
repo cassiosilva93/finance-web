@@ -19,6 +19,8 @@ export const Container = styled.button<ContainerButtonProps>`
   border: 0;
   font-size: 0.93rem;
   transition: background-color 0.3s;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: ${theme.colors.orange[700]};
