@@ -46,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.gray[800]};
     position: relative;
     border-radius: 10px;
+
+    @media (max-width: 426px) {
+      border-radius: 0;
+    }
   }
 
   .divider {
