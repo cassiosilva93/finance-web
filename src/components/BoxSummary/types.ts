@@ -1,9 +1,10 @@
-import { IconType } from 'react-icons/lib';
+import { ComponentType } from 'react';
+import { IconBaseProps } from 'react-icons';
 
 export interface BoxSummaryContentProps {
   title: string;
   value: number;
   color: string;
-  icon: IconType;
+  icon?: ComponentType<IconBaseProps>;
   changeColor?: boolean;
 }
