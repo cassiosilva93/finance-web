@@ -7,6 +7,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  label {
+    font-size: 0.87rem;
+  }
 `;
 
 export const Form = styled.form`

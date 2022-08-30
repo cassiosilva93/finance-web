@@ -17,7 +17,7 @@ export default function Input({
 
   return (
     <Container>
-      <label htmlFor={id}>{title}</label>
+      {title && <label htmlFor={id}>{title}</label>}
       <ContainerInput>
         <input {...register(id)} {...rest} />
         {Icon && <Icon size={25} onClick={handleChangeEyeVisibility} />}

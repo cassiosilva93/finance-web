@@ -34,7 +34,7 @@ export default function SignInPage() {
   async function onSubmit({ email, password }: FormProps) {
     const result = await signIn({ email, password });
     if (!result) return toast.error('Email ou senha incorreto.');
-    navigate('/transactions');
+    return navigate('/transactions');
   }
 
   return (
