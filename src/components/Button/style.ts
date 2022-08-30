@@ -10,12 +10,14 @@ export const Container = styled.button<ContainerButtonProps>`
     if (isSelected) return orange[700];
     return gray[800];
   }};
+
   color: ${({ isSelected, disabled }) => {
     const { gray, txt } = theme.colors;
     if (disabled) return `${gray[600]}!important`;
     if (isSelected) return txt;
     return gray[700];
   }};
+
   border: 0;
   font-size: 0.93rem;
   transition: background-color 0.3s;
