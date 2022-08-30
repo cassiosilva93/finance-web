@@ -42,15 +42,9 @@ export const ModalFooter = styled.div`
 
   button {
     background: ${theme.colors.orange[700]};
-    border: 0;
     border-radius: 5px;
-    height: 40px;
-    width: 150px;
-    font-size: 0.93rem;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
-    justify-content: center;
-    align-items: center;
     display: flex;
 
     &:hover {

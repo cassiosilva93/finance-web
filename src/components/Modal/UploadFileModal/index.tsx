@@ -134,7 +134,11 @@ export default function UploadFileModal({
             <CancelContainer onClick={handleCloseModal}>
               Cancelar
             </CancelContainer>
-            <Button type="submit" disabled={isSubmitting || !file}>
+            <Button
+              type="submit"
+              disabled={isSubmitting || !file}
+              style={{ height: '40px', width: '150px' }}
+            >
               {isSubmitting ? (
                 <ReactLoading type="spin" height={20} width={20} />
               ) : (
