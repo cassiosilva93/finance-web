@@ -21,6 +21,7 @@ import {
   RegisterInformationContainer,
   TransactionsContainer,
 } from './style';
+import Transaction from './types';
 
 export default function TransactionPage() {
   const [isVisibleEditTransactionModal, setIsVisibleEditTransactionModal] =
@@ -37,15 +38,15 @@ export default function TransactionPage() {
   const transactionMapped = getAlltransactionData?.getTransactions.map(
     transaction => {
       return {
-        id: transaction?.id as string,
-        type: transaction?.type as string,
-        title: transaction?.title as string,
-        date: transaction?.created_at as string,
-        value: transaction?.value as number,
-        category: transaction?.category as string,
+        id: transaction?.id,
+        type: transaction?.type,
+        title: transaction?.title,
+        date: transaction?.created_at,
+        value: transaction?.value,
+        category: transaction?.category,
       };
     },
-  );
+  ) as Transaction[];
 
   function handleShowEditTransactionModal() {
     setIsVisibleEditTransactionModal(prev => !prev);
