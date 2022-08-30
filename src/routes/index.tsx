@@ -1,3 +1,4 @@
+import DashboardPage from '@src/pages/DashboardPage';
 import SignInPage from '@src/pages/SignInPage';
 import { Route, Routes } from 'react-router-dom';
 import TransactionPage from '../pages/TransactionPage';
@@ -11,7 +12,7 @@ export default function Routers() {
         <Route path="/transactions" element={<TransactionPage />} />
       </Route>
       <Route path="dashboard" element={<Private />}>
-        <Route path="/dashboard" element={<TransactionPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
     </Routes>
   );
