@@ -1,3 +1,5 @@
+import { StringHelper } from '@src/helpers/StringHelper';
+import { useAuth } from '@src/hooks/auth/auth';
 import { useState } from 'react';
 import Avatar from 'react-avatar';
 import { AiOutlinePoweroff } from 'react-icons/ai';
@@ -5,6 +7,7 @@ import LogoutModal from '../Modal/LogoutModal';
 import { Container, IconLogout, UserArea, UserInfo, Welcome } from './style';
 
 export default function Header() {
+  const { user } = useAuth();
   const [isVisibleLogoutModal, setIsVisibleLogoutModal] = useState(false);
 
   function handleShowLogoutModal() {
@@ -16,18 +19,18 @@ export default function Header() {
       <Container>
         <Welcome className="welcome">
           <h1>
-            Bem-vindo(a), <span>Cassio</span>
+            Bem-vindo(a), <span>{StringHelper.getFirstName(user.name)}</span>
           </h1>
 
           <p>Aqui está o resumo da sua vida financeira</p>
         </Welcome>
 
         <UserArea>
-          <Avatar name="Cassio Oliveira" size="56" round="50%" />
+          <Avatar name={user.name} size="56" round="50%" />
 
           <UserInfo>
-            <p className="name">Cassio Oliveira Silva</p>
-            <p id="email">cassiointw1993@gmail.com</p>
+            <p className="name">{user.name}</p>
+            <p id="email">{user.email}</p>
           </UserInfo>
         </UserArea>
 
