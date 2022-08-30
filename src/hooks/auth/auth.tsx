@@ -5,27 +5,23 @@ import { AuthContextData, AuthProviderProps, SignInCredentials } from './types';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-function AuthProvider({ children }: AuthProviderProps) {
+const AuthProvider = ({ children }: AuthProviderProps) => {
   const [data, setData] = useState(() => {
     const token = localStorage.getItem('@financeweb:token');
     const user = localStorage.getItem('@financeweb:user');
 
     if (token && user) {
       axiosClientApi.defaults.headers.common.Authorization = `Bearer ${token}`;
-
       return { token, user: JSON.parse(user) };
     }
 
     return {};
   });
 
-  const [useLoginQuery] = useLoginLazyQuery();
+  const [loginQuery] = useLoginLazyQuery();
 
-  async function signIn({
-    email,
-    password,
-  }: SignInCredentials): Promise<boolean> {
-    const { data: loginQueryData } = await useLoginQuery({
+  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
+    const { data: loginQueryData } = await loginQuery({
       variables: { data: { email, password } },
     });
 
@@ -42,30 +38,32 @@ function AuthProvider({ children }: AuthProviderProps) {
     setData({ token, user });
 
     return true;
-  }
+  }, []);
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@financeweb:token');
     localStorage.removeItem('@financeweb:user');
-
     setData({});
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, isLogged: !!data.user, signIn, signOut }}
+      value={{
+        user: data.user,
+        isLogged: !!data.user,
+        signIn,
+        signOut,
+      }}
     >
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-function useAuth(): AuthContextData {
+const useAuth = (): AuthContextData => {
   const context = useContext(AuthContext);
-
   if (!context) throw new Error('useAuth must be used within an AuthProvider');
-
   return context;
-}
+};
 
 export { AuthProvider, useAuth };
