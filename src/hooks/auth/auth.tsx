@@ -1,6 +1,12 @@
 import axiosClientApi from '@src/services/clients/axiosClient';
 import { useLoginLazyQuery } from '@src/services/graphql/generated/schema';
-import { createContext, useCallback, useContext, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import { AuthContextData, AuthProviderProps, SignInCredentials } from './types';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -49,18 +55,16 @@ function AuthProvider({ children }: AuthProviderProps) {
     setData({});
   }, []);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        user: data.user,
-        isLogged: !!data.user,
-        signIn,
-        signOut,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = useMemo(() => {
+    return {
+      user: data.user,
+      isLogged: !!data.user,
+      signIn,
+      signOut,
+    };
+  }, [data, signIn, signOut]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 const useAuth = (): AuthContextData => {
