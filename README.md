@@ -36,11 +36,14 @@
 - React
 - TypeScript
 - Styled Components
+- Polished
 - Jest
 - Codegen
 - Vite
+- GraphQL
 - Apollo Client
 - Axios
+- Yup
 
 ## Features
 
@@ -50,5 +53,49 @@
 - Upload transactions with csv file
 
 <br>
+
+## 🏃 How to execute
+
+Create the .env file with the same variables as the .env.example file.
+
+Clone project:
+
+```bash
+$ git clone https://github.com/intwone/finance-web.git
+```
+
+Install dependencies:
+
+```bash
+$ npm install
+```
+
+Start app:
+
+```bash
+$ npm run start:dev
+```
+
+<br>
+
+## 📦 Other scripts
+
+Build:
+
+```bash
+$ npm run build
+```
+
+Lint:
+
+```bash
+$ npm run lint:fix
+```
+
+Generate GraphQL Schemas:
+
+```bash
+$ npm run codegen
+```
 
 <h4 align="center">Made with 💙 by Cassio Oliveira</h4>
