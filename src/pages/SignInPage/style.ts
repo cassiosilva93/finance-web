@@ -23,7 +23,7 @@ export const Form = styled.form`
   border-radius: 10px;
 
   div + div {
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
   div {
