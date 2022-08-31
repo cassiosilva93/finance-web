@@ -55,6 +55,7 @@ export const ModalFooter = styled.div`
     border-radius: 5px;
     color: ${theme.colors.txt};
     transition: background-color 0.3s;
+    display: flex;
 
     &:hover {
       background-color: ${transparentize(0.3, theme.colors.orange[700])};
