@@ -6,11 +6,11 @@ import TransactionItem from '@src/components/TransactionItem';
 import { DateHelper } from '@src/helpers/DateHelper';
 import MainLayoult from '@src/layouts/MainLayout';
 import {
-  useGetAllTransactionsQuery,
+  useGetAllTransactionsLazyQuery,
   useGetTransactionInfoQuery,
 } from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 import ReactLoading from 'react-loading';
 import {
@@ -31,9 +31,15 @@ export default function TransactionPage() {
     setIsVisibleCreateNewTransactionModal,
   ] = useState(false);
 
-  const { data: getAlltransactionData, loading: getAlltransactionLoading } =
-    useGetAllTransactionsQuery();
+  const [
+    getAllTransactionsLazyQuery,
+    { data: getAlltransactionData, loading: getAlltransactionLoading },
+  ] = useGetAllTransactionsLazyQuery();
   const { data: getTransactionInfoData } = useGetTransactionInfoQuery();
+
+  useEffect(() => {
+    getAllTransactionsLazyQuery().then(res => res.refetch());
+  }, []);
 
   const transactionMapped = getAlltransactionData?.getTransactions.map(
     transaction => {
