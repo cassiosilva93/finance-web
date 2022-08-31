@@ -4,8 +4,8 @@ import { IconBaseProps } from 'react-icons';
 
 export default interface InputProps
   extends InputHTMLAttributes<HTMLInputElement> {
-  register: UseFormRegister<{ password: string; email: string }>;
-  id: 'password' | 'email';
+  register: UseFormRegister<any>;
+  id: string;
   title?: string;
   changeStateCallback?: (param: (state: boolean) => boolean) => void;
   icon?: ComponentType<IconBaseProps>;
