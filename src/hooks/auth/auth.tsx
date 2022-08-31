@@ -5,7 +5,7 @@ import { AuthContextData, AuthProviderProps, SignInCredentials } from './types';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-const AuthProvider = ({ children }: AuthProviderProps) => {
+function AuthProvider({ children }: AuthProviderProps) {
   const [data, setData] = useState(() => {
     const token = localStorage.getItem('@financeweb:token');
     const user = localStorage.getItem('@financeweb:user');
@@ -20,25 +20,28 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [loginQuery] = useLoginLazyQuery();
 
-  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const { data: loginQueryData } = await loginQuery({
-      variables: { data: { email, password } },
-    });
+  const signIn = useCallback(
+    async ({ email, password }: SignInCredentials) => {
+      const { data: loginQueryData } = await loginQuery({
+        variables: { data: { email, password } },
+      });
 
-    const token = loginQueryData?.login?.token as string;
-    const user = loginQueryData?.login?.user;
+      const token = loginQueryData?.login?.token as string;
+      const user = loginQueryData?.login?.user;
 
-    if (!token && !user) return false;
+      if (!token && !user) return false;
 
-    localStorage.setItem('@financeweb:token', token);
-    localStorage.setItem('@financeweb:user', JSON.stringify(user));
+      localStorage.setItem('@financeweb:token', token);
+      localStorage.setItem('@financeweb:user', JSON.stringify(user));
 
-    axiosClientApi.defaults.headers.common.Authorization = `Bearer ${token}`;
+      axiosClientApi.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    setData({ token, user });
+      setData({ token, user });
 
-    return true;
-  }, []);
+      return true;
+    },
+    [loginQuery],
+  );
 
   const signOut = useCallback(() => {
     localStorage.removeItem('@financeweb:token');
@@ -58,7 +61,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 const useAuth = (): AuthContextData => {
   const context = useContext(AuthContext);
