@@ -100,7 +100,7 @@ export default function SignUpPage() {
           {loading ? (
             <ReactLoading type="spin" height={20} width={20} />
           ) : (
-            'Entrar'
+            'Cadastrar'
           )}
         </Button>
 
