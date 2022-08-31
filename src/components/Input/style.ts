@@ -30,6 +30,11 @@ export const ContainerInput = styled.div`
     width: 100%;
   }
 
+  input::placeholder {
+    font-size: 13px;
+    font-style: italic;
+  }
+
   svg {
     margin-right: 10px;
     transition: color 0.3s;
