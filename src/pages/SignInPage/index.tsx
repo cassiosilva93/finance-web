@@ -45,7 +45,13 @@ export default function SignInPage() {
           style={{ color: theme.colors.orange[700], marginBottom: '30px' }}
         />
 
-        <Input type="email" id="email" title="E-mail" register={register} />
+        <Input
+          type="email"
+          id="email"
+          title="E-mail"
+          register={register}
+          placeholder="Digite seu e-mail"
+        />
 
         <Input
           type={passwordInputState.typePasswordInput}
@@ -54,6 +60,7 @@ export default function SignInPage() {
           title="Senha"
           changeStateCallback={setEyeIsOpen}
           register={register}
+          placeholder="Digite sua senha"
         />
 
         <Button
@@ -73,10 +80,7 @@ export default function SignInPage() {
         </a>
 
         <NoHaveRegister>
-          Não tem cadastro?{' '}
-          <a href="#" className="no-have-register">
-            Cadastrar
-          </a>
+          Não tem cadastro? <a href="/register">Cadastrar</a>
         </NoHaveRegister>
       </Form>
     </Container>
