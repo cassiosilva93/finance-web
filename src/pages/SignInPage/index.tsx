@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible, AiFillRocket } from 'react-icons/ai';
 import ReactLoading from 'react-loading';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { schema } from './schema';
 import { Container, Form, NoHaveRegister } from './style';
@@ -75,12 +75,12 @@ export default function SignInPage() {
           )}
         </Button>
 
-        <a href="#" className="forgot-password">
+        <Link to={''} className="forgot-password">
           Esqueceu sua senha?
-        </a>
+        </Link>
 
         <NoHaveRegister>
-          Não tem cadastro? <a href="/register">Cadastrar</a>
+          Não tem cadastro? <Link to="/register">Cadastrar</Link>
         </NoHaveRegister>
       </Form>
     </Container>

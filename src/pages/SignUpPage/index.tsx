@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible, AiFillRocket } from 'react-icons/ai';
 import ReactLoading from 'react-loading';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { schema } from './schema';
 import { AlreadyHaveRgistration, Container, Form } from './style';
@@ -104,7 +105,7 @@ export default function SignUpPage() {
         </Button>
 
         <AlreadyHaveRgistration>
-          Já tem cadastro? <a href="/">Login</a>
+          Já tem cadastro? <Link to="/">Login</Link>
         </AlreadyHaveRgistration>
       </Form>
     </Container>
