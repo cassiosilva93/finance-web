@@ -18,6 +18,8 @@
   <tr><img alt="Repository size" src="https://img.shields.io/github/repo-size/cassiosilva93/finance-web.svg"><tr>
 </div>
 
+<br>
+
 <div align="center">
   <div>
     <img src="https://i.ibb.co/2jrn3Tf/Screenshot-14-removebg-preview.png" alt="App on smartphone" border="0">
