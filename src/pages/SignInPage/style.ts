@@ -22,10 +22,6 @@ export const Form = styled.form`
   padding: 30px;
   border-radius: 10px;
 
-  div + div {
-    margin-top: 10px;
-  }
-
   div {
     width: 100%;
   }

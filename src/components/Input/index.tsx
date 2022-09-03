@@ -1,11 +1,11 @@
-import { Container, ContainerInput } from './style';
+import { Container, ContainerInput, ErrorContainer } from './style';
 import InputProps from './types';
 
 export default function Input({
   register,
   id,
   icon: Icon,
-  title,
+  error,
   changeStateCallback,
   ...rest
 }: InputProps) {
@@ -17,11 +17,16 @@ export default function Input({
 
   return (
     <Container>
-      {title && <label htmlFor={id}>{title}</label>}
       <ContainerInput>
         <input {...register(id)} {...rest} />
         {Icon && <Icon size={25} onClick={handleChangeEyeVisibility} />}
       </ContainerInput>
+
+      {error && (
+        <ErrorContainer>
+          <p>{error.message}</p>
+        </ErrorContainer>
+      )}
     </Container>
   );
 }

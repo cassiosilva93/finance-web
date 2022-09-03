@@ -20,7 +20,7 @@ export default function SignInPage() {
   const {
     handleSubmit,
     register,
-    formState: { isDirty, isValid, isSubmitting },
+    formState: { isDirty, isValid, isSubmitting, errors },
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -48,8 +48,8 @@ export default function SignInPage() {
         <Input
           type="email"
           id="email"
-          title="E-mail"
           register={register}
+          error={errors.email}
           placeholder="Digite seu e-mail"
         />
 
@@ -57,9 +57,9 @@ export default function SignInPage() {
           type={passwordInputState.typePasswordInput}
           id="password"
           icon={passwordInputState.eyeIcon}
-          title="Senha"
           changeStateCallback={setEyeIsOpen}
           register={register}
+          error={errors.password}
           placeholder="Digite sua senha"
         />
 

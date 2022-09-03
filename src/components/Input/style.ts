@@ -14,7 +14,7 @@ export const ContainerInput = styled.div`
   background-color: ${theme.colors.gray[900]};
   border-radius: 5px;
   border: none;
-  margin-top: 3px;
+  margin-top: 10px;
 
   &:focus-within {
     box-shadow: inset 0 0 0 2px ${theme.colors.orange[700]};
@@ -43,5 +43,16 @@ export const ContainerInput = styled.div`
       transition: color 0.3s;
       color: ${theme.colors.orange[700]};
     }
+  }
+`;
+
+export const ErrorContainer = styled.div`
+  display: flex;
+  margin-top: 5px;
+
+  p {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: ${theme.colors.red[800]};
   }
 `;

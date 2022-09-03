@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const {
     handleSubmit,
     register,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
     reset,
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
@@ -59,16 +59,16 @@ export default function SignUpPage() {
         <Input
           type="text"
           id="name"
-          title="Nome"
           register={register}
+          error={errors.name}
           placeholder="Digite seu nome completo"
         />
 
         <Input
           type="email"
           id="email"
-          title="E-mail"
           register={register}
+          error={errors.email}
           placeholder="Digite seu e-mail"
         />
 
@@ -76,9 +76,9 @@ export default function SignUpPage() {
           type={passwordInputState.typePasswordInput}
           id="password"
           icon={passwordInputState.eyeIcon}
-          title="Senha"
           changeStateCallback={setEyeIsOpen}
           register={register}
+          error={errors.password}
           placeholder="Digite sua senha"
         />
 
@@ -86,9 +86,9 @@ export default function SignUpPage() {
           type={passwordInputState.typePasswordInput}
           id="confirm_password"
           icon={passwordInputState.eyeIcon}
-          title="Confirmar senha"
           changeStateCallback={setEyeIsOpen}
           register={register}
+          error={errors.confirm_password}
           placeholder="Confirme sua senha"
         />
 

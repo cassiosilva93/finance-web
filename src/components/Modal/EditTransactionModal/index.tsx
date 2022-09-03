@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@src/components/Button';
+import Input from '@src/components/Input';
 import {
   GetAllTransactionsDocument,
   GetBoxSummaryInfoDocument,
@@ -41,7 +42,7 @@ export default function EditTransactionModal({
   const {
     handleSubmit,
     register,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -98,20 +99,22 @@ export default function EditTransactionModal({
           <div className="divider" />
 
           <ModalBody>
-            <input
+            <Input
               type="text"
               id="title"
-              placeholder="Título"
-              {...register('title')}
+              register={register}
+              error={errors.title}
               defaultValue={transaction?.title}
+              placeholder="Digite o título da transação"
             />
 
-            <input
-              type="text"
+            <Input
+              type="string"
               id="value"
-              placeholder="Valor"
-              {...register('value')}
+              register={register}
+              error={errors.value}
               defaultValue={transaction?.value}
+              placeholder="Digite o valor da transação"
             />
 
             <TransactionTypeContainer>
@@ -136,12 +139,13 @@ export default function EditTransactionModal({
               </RadioBox>
             </TransactionTypeContainer>
 
-            <input
+            <Input
               type="text"
               id="category"
-              placeholder="Categoria"
-              {...register('category')}
+              register={register}
+              error={errors.category}
               defaultValue={transaction?.category}
+              placeholder="Digite a categoria da transação"
             />
           </ModalBody>
         </Content>

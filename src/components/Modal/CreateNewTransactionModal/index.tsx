@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@src/components/Button';
+import Input from '@src/components/Input';
 import {
   GetAllTransactionsDocument,
   GetBoxSummaryInfoDocument,
@@ -35,7 +36,7 @@ export default function CreateNewTransactionModal({
   const {
     handleSubmit,
     register,
-    formState: { isDirty, isValid },
+    formState: { isDirty, isValid, errors },
     reset,
   } = useForm<FormProps>({
     resolver: yupResolver(schema),
@@ -89,18 +90,20 @@ export default function CreateNewTransactionModal({
           <div className="divider" />
 
           <ModalBody>
-            <input
+            <Input
               type="text"
               id="title"
-              placeholder="Título"
-              {...register('title')}
+              register={register}
+              error={errors.title}
+              placeholder="Digite o título da transação"
             />
 
-            <input
+            <Input
               type="string"
               id="value"
-              placeholder="Valor"
-              {...register('value')}
+              register={register}
+              error={errors.value}
+              placeholder="Digite o valor da transação"
             />
 
             <TransactionTypeContainer>
@@ -125,11 +128,12 @@ export default function CreateNewTransactionModal({
               </RadioBox>
             </TransactionTypeContainer>
 
-            <input
+            <Input
               type="text"
               id="category"
-              placeholder="Categoria"
-              {...register('category')}
+              register={register}
+              error={errors.category}
+              placeholder="Digite a categoria da transação"
             />
           </ModalBody>
         </Content>

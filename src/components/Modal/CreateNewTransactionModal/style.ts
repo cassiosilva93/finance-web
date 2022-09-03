@@ -10,24 +10,6 @@ const colors = {
 
 export const Content = styled.div`
   padding: 20px;
-
-  input {
-    height: 50px;
-    background-color: ${theme.colors.gray[900]};
-    border: none;
-    border-radius: 5px;
-    padding: 0 10px;
-    font-size: 0.93rem;
-    color: ${theme.colors.gray[700]};
-
-    & + input {
-      margin-top: 10px;
-    }
-
-    &:focus {
-      border: 2px solid ${theme.colors.orange[700]};
-    }
-  }
 `;
 
 export const ModalBody = styled.div`
@@ -75,7 +57,7 @@ export const CancelContainer = styled.a`
 `;
 
 export const TransactionTypeContainer = styled.div`
-  margin: 10px 0;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;

@@ -1,10 +1,12 @@
+import theme from '@src/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
 
   p {
-    margin-left: 5px;
+    font-weight: 400;
     font-size: 0.75rem;
+    color: ${theme.colors.red[800]};
   }
 `;
