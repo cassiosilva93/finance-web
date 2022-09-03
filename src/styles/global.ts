@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: ${theme.colors.orange[700]};
+      background-color: ${theme.colors.gray[700]};
       border-radius: 10px;
     }
   }
