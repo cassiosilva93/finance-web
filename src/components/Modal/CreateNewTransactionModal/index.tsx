@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '@src/components/Button';
 import Input from '@src/components/Input';
 import {
   GetAllTransactionsDocument,
@@ -12,16 +11,14 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
-import ReactLoading from 'react-loading';
 import ReactModal from 'react-modal';
 import { toast } from 'react-toastify';
+import FooterModal from '../FooterModal';
 import { ModalProps } from '../types';
 import { schema } from './schema';
 import {
-  CancelContainer,
   Content,
   ModalBody,
-  ModalFooter,
   RadioBox,
   TransactionTypeContainer,
 } from './style';
@@ -138,24 +135,12 @@ export default function CreateNewTransactionModal({
           </ModalBody>
         </Content>
 
-        <ModalFooter>
-          <div>
-            <CancelContainer onClick={handleCloseModal}>
-              Cancelar
-            </CancelContainer>
-            <Button
-              type="submit"
-              disabled={loading || !isDirty || !isValid}
-              style={{ height: '40px', width: '150px' }}
-            >
-              {loading ? (
-                <ReactLoading type="spin" height={20} width={20} />
-              ) : (
-                'Salvar'
-              )}
-            </Button>
-          </div>
-        </ModalFooter>
+        <FooterModal
+          buttonTitle="Salvar"
+          closeModalFn={handleCloseModal}
+          isDisabledButton={true}
+          formStates={{ isDirty, isValid, loading }}
+        />
       </form>
     </ReactModal>
   );

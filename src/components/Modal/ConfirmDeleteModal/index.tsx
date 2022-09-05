@@ -1,4 +1,3 @@
-import Button from '@src/components/Button';
 import {
   GetAllTransactionsDocument,
   GetBoxSummaryInfoDocument,
@@ -7,11 +6,11 @@ import {
 } from '@src/services/graphql/generated/schema';
 import theme from '@src/theme';
 import { CgClose } from 'react-icons/cg';
-import ReactLoading from 'react-loading';
 import ReactModal from 'react-modal';
 import { toast } from 'react-toastify';
+import FooterModal from '../FooterModal';
 import { ModalProps } from '../types';
-import { CancelContainer, ModalBody, ModalFooter } from './style';
+import { ModalBody } from './style';
 
 export default function ConfirmDeleteModal({
   transaction,
@@ -21,7 +20,7 @@ export default function ConfirmDeleteModal({
   const [deleteTransactionMutation, { loading }] =
     useDeleteTransactionMutation();
 
-  async function handleDelete(id: string) {
+  async function handleDelete(id?: string) {
     try {
       await deleteTransactionMutation({
         variables: { id },
@@ -60,23 +59,13 @@ export default function ConfirmDeleteModal({
         </p>
       </ModalBody>
 
-      <ModalFooter>
-        <div>
-          <CancelContainer onClick={handleCloseModal}>Cancelar</CancelContainer>
-          <Button
-            onClick={() => {
-              if (!transaction?.id) return;
-              handleDelete(transaction.id);
-            }}
-          >
-            {loading ? (
-              <ReactLoading type="spin" height={20} width={20} />
-            ) : (
-              'Confirmar'
-            )}
-          </Button>
-        </div>
-      </ModalFooter>
+      <FooterModal
+        buttonTitle="Confirmar"
+        closeModalFn={handleCloseModal}
+        actionButton={handleDelete}
+        transaction={transaction}
+        formStates={{ loading }}
+      />
     </ReactModal>
   );
 }

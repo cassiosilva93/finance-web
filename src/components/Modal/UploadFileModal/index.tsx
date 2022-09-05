@@ -1,4 +1,3 @@
-import Button from '@src/components/Button';
 import DropzoneContentMessage from '@src/components/DropzoneContentMessage';
 import FileUploaded from '@src/components/FileUploaded';
 import { createTransactionFile } from '@src/services/axios/CreateTransactionFile';
@@ -14,17 +13,15 @@ import { useForm } from 'react-hook-form';
 import { CgClose } from 'react-icons/cg';
 import { FaTrash } from 'react-icons/fa';
 import { IoMdCloudUpload } from 'react-icons/io';
-import ReactLoading from 'react-loading';
 import ReactModal from 'react-modal';
 import { toast } from 'react-toastify';
+import FooterModal from '../FooterModal';
 import { FileProps, ModalProps } from '../types';
 import {
-  CancelContainer,
   Content,
   DropzoneContainer,
   FileUploadedContainer,
   ModalBody,
-  ModalFooter,
   RemoveTransactionContainer,
 } from './style';
 
@@ -129,24 +126,16 @@ export default function UploadFileModal({
           </FileUploadedContainer>
         )}
 
-        <ModalFooter>
-          <div>
-            <CancelContainer onClick={handleCloseModal}>
-              Cancelar
-            </CancelContainer>
-            <Button
-              type="submit"
-              disabled={isSubmitting || !file}
-              style={{ height: '40px', width: '150px' }}
-            >
-              {isSubmitting ? (
-                <ReactLoading type="spin" height={20} width={20} />
-              ) : (
-                'Salvar'
-              )}
-            </Button>
-          </div>
-        </ModalFooter>
+        <FooterModal
+          closeModalFn={handleCloseModal}
+          buttonTitle="Salvar"
+          isDisabledButton={true}
+          formStates={{
+            isDirty: Boolean(file),
+            isValid: Boolean(file),
+            loading: isSubmitting,
+          }}
+        />
       </form>
     </ReactModal>
   );

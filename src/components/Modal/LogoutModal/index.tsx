@@ -1,10 +1,10 @@
-import Button from '@src/components/Button';
 import { useAuth } from '@src/hooks/auth/auth';
 import theme from '@src/theme';
 import { CgClose } from 'react-icons/cg';
 import ReactModal from 'react-modal';
+import FooterModal from '../FooterModal';
 import { ModalProps } from '../types';
-import { CancelContainer, ModalBody, ModalFooter } from './style';
+import { ModalBody } from './style';
 
 export default function LogoutModal({
   isVisibleModal,
@@ -30,12 +30,11 @@ export default function LogoutModal({
 
       <ModalBody>Tem certeza que deseja sair?</ModalBody>
 
-      <ModalFooter>
-        <div>
-          <CancelContainer onClick={handleCloseModal}>Cancelar</CancelContainer>
-          <Button onClick={signOut}>Sair</Button>
-        </div>
-      </ModalFooter>
+      <FooterModal
+        closeModalFn={handleCloseModal}
+        buttonTitle="Sair"
+        actionButton={signOut}
+      />
     </ReactModal>
   );
 }

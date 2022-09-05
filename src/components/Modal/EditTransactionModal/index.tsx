@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '@src/components/Button';
 import Input from '@src/components/Input';
 import {
   GetAllTransactionsDocument,
@@ -12,20 +11,16 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsArrowDownCircle, BsArrowUpCircle } from 'react-icons/bs';
 import { CgClose } from 'react-icons/cg';
-import { FaTrash } from 'react-icons/fa';
-import ReactLoading from 'react-loading';
 import ReactModal from 'react-modal';
 import { toast } from 'react-toastify';
 import ConfirmDeleteModal from '../ConfirmDeleteModal';
+import FooterModal from '../FooterModal';
 import { ModalProps } from '../types';
 import { schema } from './schema';
 import {
-  CancelContainer,
   Content,
   ModalBody,
-  ModalFooter,
   RadioBox,
-  RemoveTransactionContainer,
   TransactionTypeContainer,
 } from './style';
 import { FormProps } from './types';
@@ -150,31 +145,14 @@ export default function EditTransactionModal({
           </ModalBody>
         </Content>
 
-        <ModalFooter>
-          <RemoveTransactionContainer
-            onClick={() => handleShowConfirmDeleteModal()}
-          >
-            <FaTrash />
-            <a>Excluir</a>
-          </RemoveTransactionContainer>
-
-          <div>
-            <CancelContainer onClick={handleCloseModal}>
-              Cancelar
-            </CancelContainer>
-            <Button
-              type="submit"
-              disabled={loading || !isDirty || !isValid}
-              style={{ height: '40px', width: '150px' }}
-            >
-              {loading ? (
-                <ReactLoading type="spin" height={20} width={20} />
-              ) : (
-                'Salvar'
-              )}
-            </Button>
-          </div>
-        </ModalFooter>
+        <FooterModal
+          closeModalFn={handleCloseModal}
+          hasDeleteButton={true}
+          buttonTitle="Salvar"
+          transaction={transaction}
+          isDisabledButton={true}
+          formStates={{ isDirty, isValid, loading }}
+        />
       </form>
 
       {isVisibleConfirmDeleteModal && (
